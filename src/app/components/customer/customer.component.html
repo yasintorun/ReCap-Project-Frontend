@@ -1,0 +1,14 @@
+<table class="table table-hover text-dark">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">şirket adı</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of customers">
+            <th>{{customer.userId}}</th>
+            <th>{{customer.companyName}}</th>
+        </tr>
+    </tbody>
+</table>
