@@ -19,4 +19,17 @@ export class CarService {
     return this.httpClient.get<DataResponseModel<CarDetail[]>>(this.apiUrl + "/getcardetails");
   }
 
+  getCarsByBrandName(brand : string) : Observable<DataResponseModel<CarDetail[]>> {
+    return this.httpClient.get<DataResponseModel<CarDetail[]>>(this.apiUrl + "/getcarsbybrand?brand="+brand)
+  }
+
+
+  getCarsByColorName(color : string) : Observable<DataResponseModel<CarDetail[]>> {
+    return this.httpClient.get<DataResponseModel<CarDetail[]>>(this.apiUrl + "/getcarsbycolor?color="+color)
+  }
+
+  getCarDetail(carId:number):Observable<DataResponseModel<CarDetail>>{
+    return this.httpClient.get<DataResponseModel<CarDetail>>(this.apiUrl + "/getcardetail?carId=" + carId)
+  }
+
 }

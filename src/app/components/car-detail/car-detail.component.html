@@ -1,0 +1,57 @@
+<div>
+  <!--Ana div-->
+
+  <div>
+    <!--Araba resimlerinin bulunduğu ana yer-->
+    <div id="carouselControls" class="carousel slide test" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- <div class="carousel-item image-cover active">
+          <img src="https://www.volvocars.com/images/v/intl/v/-/media/project/contentplatform/data/media/my22/car-images/xc40-recharge-my22.jpg?h=860&iar=0&w=1147" class="d-block w-100" alt="...">
+        </div> -->
+
+        <div class="carousel-item image-cover" *ngFor="let carImage of carImages; let first = first;" [class] = "getCarImageActiveClass(first)">
+          <img [src]="getCarImagePath(carImage.imagePath)" class="d-block w-100" alt="car-image">
+        </div>
+        <!-- <div class="carousel-item image-cover">
+          <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/togg-suv-concept-1577634266.jpg" class="d-block w-100" alt="...">
+        </div> -->
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  
+  <div class="mt-5">
+    
+    <table class="table w-25">
+      <tbody>
+        <tr>
+          <th>Marka:</th>
+          <td>{{carDetail?.brandName ?? "Bilinmiyor"}}</td>
+        </tr>
+        <tr>
+          <th>Renk:</th>
+          <td>{{carDetail?.colorName ?? "Bilinmiyor"}}</td>
+        </tr>
+        <tr>
+          <th>Günlük Fiyat:</th>
+          <td>{{carDetail ? carDetail.dailyPrice + " TL" : "Bilinmiyor"}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <h5>Açıklama</h5>
+      <p>
+        {{carDetail?.description ?? "Bilinmiyor"}}
+      </p>  
+    </div>
+  </div>
+
+
+</div>

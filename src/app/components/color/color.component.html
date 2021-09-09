@@ -1,14 +1,18 @@
-<table class="table table-hover text-dark">
-    <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">isim</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let color of colors">
-            <th>{{color.id}}</th>
-            <th>{{color.name}}</th>
-        </tr>
-    </tbody>
-</table>
+<div class="card mt-5">
+    <div class="card-header bg-card-header">
+        Renkler
+    </div>
+    <ul class="list-group">
+        <li 
+            (click)="setCurrentColor(color)"
+            *ngFor="let color of colors"
+            routerLink ="/cars/{{color.name}}"
+            [class]="getCurrentColorClass(color)"
+            class="list-group-item list-group-item-action list-group-item-info">
+            
+            {{color.name}}
+        </li>
+    </ul>
+</div>
+
+<h5 class="text-info" *ngIf="currentColor">{{currentColor?.name}} seçtiniz</h5>
