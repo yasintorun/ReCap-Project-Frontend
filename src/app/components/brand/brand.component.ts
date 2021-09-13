@@ -1,7 +1,9 @@
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from './../../models/brand';
 import { Component, OnInit } from '@angular/core';
 import { BrandService } from 'src/app/services/brand.service';
-
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-brand',
   templateUrl: './brand.component.html',
@@ -13,11 +15,22 @@ export class BrandComponent implements OnInit {
   currentBrand :Brand | undefined | null
 
   filterText :string = ""
+  
+  brandEditForm:FormGroup
 
-  constructor(private brandService:BrandService) { }
+  constructor(private brandService:BrandService,
+              private formBuilder:FormBuilder,
+              private toastrService:ToastrService,) { }
 
   ngOnInit(): void {
     this.getBrands()
+    this.createBrandEditForm()
+  }
+
+  createBrandEditForm() {
+    this.brandEditForm = this.formBuilder.group({
+      name: ["", Validators.required],
+    })
   }
 
   getBrands() {
@@ -28,6 +41,7 @@ export class BrandComponent implements OnInit {
 
   setCurrentBrand(brand:Brand) {
     this.currentBrand = brand
+    this.brandEditForm.setValue({name:brand.name})
   }
 
   getCurrentBrandClass(brand:Brand) {
@@ -35,6 +49,43 @@ export class BrandComponent implements OnInit {
       return "active"
     }
     return ""
+  }
+
+  updateBrand() {
+    if(this.brandEditForm.valid) {
+      let brandModel = Object.assign({}, this.brandEditForm.value)
+      brandModel.id = this.currentBrand.id
+      console.log(brandModel)
+      this.brandService.update(brandModel).subscribe(response => {
+        this.toastrService.success(response.message)
+        this.getBrands()
+      }, errorResponse=> {
+        for (let i = 0; i < errorResponse.error.Errors.length; i++) {
+          this.toastrService.error(errorResponse.error.Errors[i].ErrorMessage, "Hata");
+        }
+      })
+    }else {
+      this.toastrService.error("Hatalı giriş", "Dikkat")
+    }
+  }
+
+  deleteBrand(brand: Brand) {
+    console.log(brand)
+    Swal.fire({
+      title: 'Markayı silmek istediğine emin misin?',
+      showCancelButton: true,
+      showConfirmButton: false,
+      showDenyButton: true,
+      denyButtonText:"Evet, Sil"
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isDenied) {
+        this.brandService.delete(brand).subscribe(response => {
+          Swal.fire('Silindi!', '', 'success')
+          this.getBrands()
+        })
+      }
+    })
   }
 
 }

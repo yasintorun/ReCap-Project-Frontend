@@ -1,4 +1,4 @@
-<div class="card mt-5">
+<div class="card w-50 container p-4 mb-3 mt-3">
     <div class="card-header bg-card-header">
         Renkler
     </div>
@@ -16,13 +16,39 @@
         <li 
             (click)="setCurrentColor(color)"
             *ngFor="let color of colors | SearchPipe:'name':filterText"
-            routerLink ="/cars/{{color.name}}"
             [class]="getCurrentColorClass(color)"
-            class="list-group-item list-group-item-action list-group-item-info">
+            class="list-group-item list-group-item-action list-group-item-info d-flex justify-content-between w-100 align-items-center">
             
             {{color.name}}
+            <div>
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Düzenle</button>
+                <button (click)="deleteColor(color)" class="btn btn-danger mx-2">Sil</button>
+            </div>
         </li>
     </ul>
+    <h5 class="text-info" *ngIf="currentColor">{{currentColor?.name}} seçtiniz</h5>
 </div>
 
-<h5 class="text-info" *ngIf="currentColor">{{currentColor?.name}} seçtiniz</h5>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Markayı düzenle</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="colorEditForm">
+                    <div class="form-floating" >
+                        <input formControlName="name" id="editColor" type="text" class="form-control" value="{{currentColor?.name}}"/>
+                        <label for="editColor">Renk Adı</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+              <button (click)="updateColor()" type="button" data-bs-dismiss="modal" class="btn btn-success">Kaydet</button>
+            </div>
+          </div>
+    </div>
+</div>

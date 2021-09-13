@@ -1,10 +1,11 @@
+import { DataResponseModel } from './../models/dataResponseModel';
 import { CarDetail } from './../models/carDetail';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RootURL } from '../Constants';
 import { Observable } from 'rxjs';
-import { DataResponseModel } from '../models/dataResponseModel';
 import { Car } from '../models/car';
+import { ResponseModel } from '../models/responseModel';
 @Injectable({
   providedIn: 'root'
 })
@@ -32,8 +33,25 @@ export class CarService {
     return this.httpClient.get<DataResponseModel<CarDetail>>(this.apiUrl + "/getcardetail?carId=" + carId)
   }
 
+  getCar(carId:number):Observable<DataResponseModel<Car>> {
+    return this.httpClient.get<DataResponseModel<Car>>(this.apiUrl + "/getbyid?id="+carId)
+  }
+
   getCarByFilter(brand:string, color:string) : Observable<DataResponseModel<CarDetail[]>>{
     return this.httpClient.get<DataResponseModel<CarDetail[]>>(this.apiUrl + `/getcarbyfilter?brand=${brand}&color=${color}`)
   }
+
+
+  add(car:Car):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "/add", car)
+  }
+  
+  update(car:Car):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "/update", car)
+  }
+
+  
+
+
 
 }

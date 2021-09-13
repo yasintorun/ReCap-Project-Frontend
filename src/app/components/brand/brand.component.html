@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card w-50 container p-4 mb-3 mt-3">
     <div class="card-header bg-card-header">
         Markalar
     </div>
@@ -15,14 +15,40 @@
     <ul class="list-group">
         <li 
             (click)="setCurrentBrand(brand)"
-            routerLink ="cars/{{brand.name}}"
             *ngFor="let brand of brands | SearchPipe:'name':filterText"
             [class]="getCurrentBrandClass(brand)"
-            class="list-group-item list-group-item-action list-group-item-info">
+            class="list-group-item list-group-item-action list-group-item-info d-flex justify-content-between w-100 align-items-center">
             
             {{brand.name}}
+            
+            <div>
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Düzenle</button>
+                <button (click)="deleteBrand(brand)" class="btn btn-danger mx-2">Sil</button>
+            </div>
         </li>
     </ul>
+    <h5 class="text-info" *ngIf="currentBrand">{{currentBrand?.name}} seçtiniz</h5>
 </div>
 
-<h5 class="text-info" *ngIf="currentBrand">{{currentBrand?.name}} seçtiniz</h5>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Markayı düzenle</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="brandEditForm">
+                    <div class="form-floating" >
+                        <input formControlName="name" id="editBrand" type="text" class="form-control" value="{{currentBrand?.name}}"/>
+                        <label for="editBrand">Marka Adı</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+              <button (click)="updateBrand()" type="button" data-bs-dismiss="modal" class="btn btn-success">Kaydet</button>
+            </div>
+          </div>
+    </div>
+</div>

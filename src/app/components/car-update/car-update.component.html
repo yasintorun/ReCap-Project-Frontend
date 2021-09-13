@@ -1,0 +1,48 @@
+<div *ngIf="currentCar" class="content mt-2">
+    <div col-md-12>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">Arabayı Güncelle</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="carEditForm">
+                    <div class="form-group mb-3">
+                        <label for="brandSelect">Marka: </label>
+                        <select id="brandSelect" class="form-select" formControlName="brandId">
+                            <option *ngFor="let brand of brands" value="{{brand.id}}" >
+                                {{brand.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="colorSelect">Renk: </label>
+                        <select id="colorSelect" class="form-select" formControlName="colorId">
+                            <option *ngFor="let color of colors" value="{{color.id}}" >
+                                {{color.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="dailyPrice">Model yılı: </label>
+                        <select id="colorSelect" class="form-select" formControlName="modelYear">
+                            <option *ngFor="let year of years" value="{{year}}" >
+                                {{year}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="dailyPrice">Günlük Fiyatı: </label>
+                        <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" min="0" max="1000000" placeholder="Fiyat" />
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Açıklama</label>
+                        <textarea formControlName="description" class="form-control" placeholder="Araba hakkında detaylı bilgi giriniz." id="description" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary" (click)="update()">Güncelle</button>
+            </div>
+        </div>
+    </div>
+</div>
