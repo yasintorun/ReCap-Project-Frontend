@@ -2,11 +2,21 @@
     <div class="card-header bg-card-header">
         Markalar
     </div>
+
+    <div class="mb-3">
+        <label for="filterText" class="form-label">Marka ara</label>
+        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="ara">
+      </div>
+    
+      <div *ngIf="filterText" class="alert alert-warning">
+          {{filterText}} aradınız.
+      </div>
+
     <ul class="list-group">
         <li 
             (click)="setCurrentBrand(brand)"
             routerLink ="cars/{{brand.name}}"
-            *ngFor="let brand of brands"
+            *ngFor="let brand of brands | SearchPipe:'name':filterText"
             [class]="getCurrentBrandClass(brand)"
             class="list-group-item list-group-item-action list-group-item-info">
             

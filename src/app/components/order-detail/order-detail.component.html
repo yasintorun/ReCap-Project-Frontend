@@ -1,0 +1,28 @@
+<div *ngIf="car">
+
+    <div>
+        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/togg-suv-concept-1577634266.jpg" class="d-block w-100" alt="...">
+    </div>
+
+    <div class="text-center">
+        <div class="d-flex justify-content-evenly mt-3 h4">
+            <div>
+                Marka: {{car.brandName??"Bilinmiyor"}}
+            </div>
+            <div>
+                Renk: {{car.colorName??"Bilinmiyor"}}
+            </div>
+        </div>
+        <div class="text-secondary">
+            <h4 class="text-secondary">Açıklama</h4>
+            {{car.description??"Bilinmiyor"}}
+        </div>
+        <div class="h1 fw-bold text-danger mt-5">
+            {{car.dailyPrice | currency:"₺"}}
+        </div>
+        <div class="mt-5">
+            <app-check-out></app-check-out>
+        </div>
+    </div>
+
+</div>

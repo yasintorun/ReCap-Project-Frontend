@@ -53,5 +53,5 @@
     </div>
   </div>
 
-
+  <button *ngIf="carDetail" (click)="rentCar()" routerLink="/order-detail" [queryParams]="{'car':carDetail.carId}" class="btn btn-success">Kirala</button>
 </div>

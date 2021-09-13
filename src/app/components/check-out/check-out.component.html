@@ -1,0 +1,20 @@
+
+<div class="tab-content bordered mb-5">
+    <div class="tab-pane fade show active">
+        <div class="mt-4 mx-4">
+            <div class="text-center">
+                <h5>Kredi Kartı</h5>
+            </div>
+            <form class="form mt-3">
+                <div class="inputbox"> <input [(ngModel)] = "creditCard.cardName" type="text" name="name" class="form-control" required="required"> <span>Ad Soyad</span> </div>
+                <div class="inputbox"> <input [(ngModel)] = "creditCard.cardNumber" type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Kart numarası</span> <i class="fa fa-eye"></i> </div>
+                <div class="d-flex flex-row">
+                    <div class="inputbox"> <input [(ngModel)] = "creditCard.expirationDate" type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Son kullanma tarihi</span> </div>
+                    <div class="inputbox"> <input [(ngModel)] = "creditCard.CVV" type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>CVV</span> </div>
+                </div>
+                
+            <button (click) ="Pay()" type="submit" class="btn btn-success fw-bolder mt-2">Ödeme Yap</button>
+            </form>
+        </div>
+    </div>
+</div>

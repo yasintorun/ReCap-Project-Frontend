@@ -32,4 +32,8 @@ export class CarService {
     return this.httpClient.get<DataResponseModel<CarDetail>>(this.apiUrl + "/getcardetail?carId=" + carId)
   }
 
+  getCarByFilter(brand:string, color:string) : Observable<DataResponseModel<CarDetail[]>>{
+    return this.httpClient.get<DataResponseModel<CarDetail[]>>(this.apiUrl + `/getcarbyfilter?brand=${brand}&color=${color}`)
+  }
+
 }

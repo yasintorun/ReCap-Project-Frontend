@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-between">
+    <div class="d-flex w-25 align-items-center">
+        <span class="fw-bold me-2">Marka: </span>
+        <select class="form-select" [(ngModel)] = "selectedBrand">
+            <option value="">Tümü</option>
+            <option *ngFor="let brand of brands" value="{{brand.name}}">
+                {{brand.name}}
+            </option>
+        </select>
+    </div>
+    <div class="d-flex w-25 align-items-center">
+        <span class="fw-bold me-2">Renk: </span>
+        <select class="form-select " [(ngModel)] = "selectedColor">
+            <option value="">Tümü</option>
+            <option *ngFor="let color of colors" value="{{color.name}}" >
+                {{color.name}}
+            </option>
+        </select>
+    </div>
+    <div class="ms-5">
+        <button routerLink="/cars" [queryParams]="{brand: selectedBrand, color:selectedColor}" class="btn btn-success">Filtrele</button>
+        <button (click)="resetFilter()" class="btn btn-danger ms-3">Temizle</button>
+    </div>
+</div>

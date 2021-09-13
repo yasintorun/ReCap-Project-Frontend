@@ -1,3 +1,7 @@
+import { ResponseModel } from './../../models/responseModel';
+import { ToastrService } from 'ngx-toastr';
+import { Rental } from './../../models/Rental';
+import { RentalService } from './../../services/rental.service';
 import { CarService } from './../../services/car.service';
 import { CarDetail } from 'src/app/models/carDetail';
 import { HostRoot } from './../../Constants';
@@ -18,7 +22,9 @@ export class CarDetailComponent implements OnInit {
   constructor(
     private carImageService:CarImageService,
     private activatedRoute:ActivatedRoute,
-    private carService:CarService
+    private carService:CarService,
+    private rentalService:RentalService,
+    private toastrService:ToastrService
     ){ }
 
   ngOnInit(): void {
@@ -55,4 +61,18 @@ export class CarDetailComponent implements OnInit {
   }
 
 
+  rentCar() {
+    // let rental:Rental = {
+    //   carId: this.carDetail.carId, 
+    //   customerId: 3, //Todo : dinamik yap
+    //   returnDate: null,
+    //   rentDate: null
+    // }
+    // this.rentalService.rentCar(rental).subscribe(response => {
+    //   this.toastrService.success(response.message)
+    // }, errorResponse => {
+    //   let error:ResponseModel = errorResponse.error
+    //   this.toastrService.error(error.message)
+    // })
+  }
 }

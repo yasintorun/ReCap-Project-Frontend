@@ -2,10 +2,20 @@
     <div class="card-header bg-card-header">
         Renkler
     </div>
+
+    <div class="mb-3">
+        <label for="filterText" class="form-label">Renk ara</label>
+        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="ara">
+      </div>
+    
+      <div *ngIf="filterText" class="alert alert-warning">
+          {{filterText}} aradınız.
+      </div>
+
     <ul class="list-group">
         <li 
             (click)="setCurrentColor(color)"
-            *ngFor="let color of colors"
+            *ngFor="let color of colors | SearchPipe:'name':filterText"
             routerLink ="/cars/{{color.name}}"
             [class]="getCurrentColorClass(color)"
             class="list-group-item list-group-item-action list-group-item-info">
