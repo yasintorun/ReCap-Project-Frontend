@@ -50,7 +50,9 @@ export class CarService {
     return this.httpClient.post<ResponseModel>(this.apiUrl + "/update", car)
   }
 
-  
+  getCarTotalPrice(carId:number, rentDate:string, returnDate:string) {
+    return this.httpClient.get<DataResponseModel<number>>(this.apiUrl + `/getcartotalprice?carId=${carId}&rentDate=${rentDate}&returnDate=${returnDate}`)
+  }
 
 
 

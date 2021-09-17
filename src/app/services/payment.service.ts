@@ -1,4 +1,4 @@
-import { Payment } from './../models/payment';
+import { Payment } from './../models/paymentInfo';
 import { PaymentInfo } from 'src/app/models/paymentInfo';
 import { ResponseModel } from './../models/responseModel';
 import { CreditCard } from './../models/creditCard';
@@ -17,8 +17,8 @@ export class PaymentService {
 
   constructor(private httpClient: HttpClient) { }
 
-  Pay() : Observable<ResponseModel> {
-    return this.httpClient.post<ResponseModel>(this.apiUrl + "/pay", PaymentInfo)
+  Pay(payment:Payment) : Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "/pay", payment)
   }
 
 }

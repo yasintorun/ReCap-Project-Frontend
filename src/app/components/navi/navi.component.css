@@ -1,0 +1,28 @@
+nav {
+    height: 70px;
+    font-size: large;
+}
+
+.navbar-brand {
+    margin-bottom: 5px;
+}
+
+nav > .container > a {
+    font-weight: 900;
+    font-size: x-large;
+}
+
+nav > .container > a > span {
+    color: var(--primaryThemeColor);
+}
+
+.navbar-nav > li {
+    margin-right: 20px;
+}
+
+.active {
+    color: var(--primaryThemeColor) !important;
+}
+li > .active {
+    border-bottom: 1px solid var(--primaryThemeColor);
+}

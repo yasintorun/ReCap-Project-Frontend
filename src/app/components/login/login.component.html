@@ -1,0 +1,38 @@
+<div class="login-page w-100">
+    <div class="container">
+        <div class="login-card">
+            <div class="card-body">
+                <div class="company-logo" routerLink="/" >Car<span>Book</span></div>
+                <form class="mb-4" [formGroup]="loginForm">
+                    <div class="form-floating mb-3">
+                        <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Eposta</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="password" formControlName="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Şifre</label>
+                      </div>
+                      <div class="d-md-flex justify-content-between mb-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Beni hatırla</label>
+                        </div>
+                        <div>
+                            <a routerLink="/forgotpassword" class="text-secondary">Şifremi unuttum</a>
+                        </div>
+                      </div>
+
+
+                      <button (click)="login()" class="btn  login-btn">Giriş Yap</button>
+
+                </form>
+
+                <div class="register">
+                    <a routerLink="register">
+                        Üye olmak için tıklayın.
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

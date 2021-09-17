@@ -1,20 +1,66 @@
+<div class="w-100">
+    <div class="container-xxl">
+        <div class="row">
+            <div class="col-md-7 py-5">
+                <div class="summary-cart p-sm-2 p-md-5">
+                    <div class="pb-4">
+                        <h3>Kiralanacak Araba</h3>
+                    </div>
+                    <div>
+                        <div class="car-image" style="background-image: url({{carImage.imagePath}});">
+                        </div>
+                        <div>
+                            <div class="mt-3">
+                                <div class="text text-center">
+                                    <span class="subheading">{{carDetail?.brandName??"Bilinmiyor"}}</span>
+                                    <h2 class="text-dark">{{carDetail?.name??"Bilinmiyor"}}</h2>
+                                </div>
+                                <div class="alert alert-primary text-center fw-bolder pick-date mt-3">
+                                    {{showDateWithMonthName(rentalCarModel.rentDate??"")}} - {{showDateWithMonthName(rentalCarModel.returnDate??"")}}
+                                </div>
+                                <div class="price">
+                                    Toplam Ödeme: {{totalPrice}} TL 
+                                </div>
 
-<div class="tab-content bordered mb-5">
-    <div class="tab-pane fade show active">
-        <div class="mt-4 mx-4">
-            <div class="text-center">
-                <h5>Kredi Kartı</h5>
-            </div>
-            <form class="form mt-3">
-                <div class="inputbox"> <input [(ngModel)] = "creditCard.cardName" type="text" name="name" class="form-control" required="required"> <span>Ad Soyad</span> </div>
-                <div class="inputbox"> <input [(ngModel)] = "creditCard.cardNumber" type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Kart numarası</span> <i class="fa fa-eye"></i> </div>
-                <div class="d-flex flex-row">
-                    <div class="inputbox"> <input [(ngModel)] = "creditCard.expirationDate" type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Son kullanma tarihi</span> </div>
-                    <div class="inputbox"> <input [(ngModel)] = "creditCard.CVV" type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>CVV</span> </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-            <button (click) ="Pay()" type="submit" class="btn btn-success fw-bolder mt-2">Ödeme Yap</button>
-            </form>
+
+            </div>
+            <div class="col-md-5 pt-5 pb-5 bg-light">
+                <div class="credit-card p-md-5">
+                    <div class="pb-4">
+                        <h3 class="">Kart Detayları</h3>
+                    </div>
+                    <div class="carts-img-logo w-100" style="background-image: url(https://voltmotor.com.tr/wp-content/uploads/2019/02/carts.png);">
+                    
+                    </div>
+                    <div>
+                        <form [formGroup]="creditCardForm">
+                            <div class="form-group">
+                                <input formControlName="cardName" type="text" class="form-control" placeholder="Kart Sahibi" />
+                            </div>
+                            <div class="form-group">
+                                <input formControlName="cardNumber" type="text" class="form-control" placeholder="Kart Numarası">
+                            </div>
+                            <div class="cart-month-year form-group d-flex justify-content-between">
+                                <select formControlName="month" class="form-control form-select">
+                                    <option *ngFor="let month of months">{{month}}</option>
+                                </select>
+                                <select formControlName="year" class="form-control form-select">
+                                    <option *ngFor="let year of years">{{year}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input formControlName="cvv" type="text" class="form-control" placeholder="CVV" />
+                            </div>
+                            <button class="btn w-100 text-primary-theme" (click)="Pay2()">Ödemeyi Tamamla</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+

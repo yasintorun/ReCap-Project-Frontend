@@ -1,106 +1,59 @@
-.launch {
-    height: 50px
+.carts-img-logo {
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
-.close {
-    font-size: 21px;
-    cursor: pointer
+.form-group {
+    margin: 20px 0px;
 }
 
-.modal-body {
-    height: 450px
+.form-group .form-control {
+    padding: 10px !important;
+    border: 1px solid rgba(146, 146, 146, 0.1);
 }
 
-.nav-tabs {
-    border: none !important
+.form-group input::placeholder {
+    opacity: 0.3;
 }
 
-.nav-tabs .nav-link.active {
-    color: #495057;
-    background-color: #fff;
-    border-color: #ffffff #ffffff #fff;
-    border-top: 3px solid blue !important
+.form-group select {
+    width: 80px;
 }
 
-.nav-tabs .nav-link {
-    margin-bottom: -1px;
-    border: 1px solid transparent;
-    border-top-left-radius: 0rem;
-    border-top-right-radius: 0rem;
-    border-top: 3px solid #eee;
-    font-size: 20px
+.cart-month-year {
+    max-width: 200px;
 }
 
-.nav-tabs .nav-link:hover {
-    border-color: #e9ecef #ffffff #ffffff
+.car-image {
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+
 }
 
-.nav-tabs {
-    display: table !important;
-    width: 100%
+.subheading {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgba(0, 0, 0, 0.5);
+    display: block;
 }
 
-.nav-item {
-    display: table-cell
+
+.price {
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 900;
+    font-size: 28px;
+    color: rgba(199, 16, 16, 0.787);
 }
 
-.form-control {
-    border-bottom: 1px solid #eee !important;
-    border: none;
-    font-weight: 600
-}
 
-.form-control:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #8bbafe;
-    outline: 0;
-    box-shadow: none
-}
-
-.inputbox {
-    position: relative;
-    margin-bottom: 20px;
-    width: 100%
-}
-
-.inputbox span {
-    position: absolute;
-    top: 7px;
-    left: 11px;
-    transition: 0.5s
-}
-
-.inputbox i {
-    position: absolute;
-    top: 13px;
-    right: 8px;
-    transition: 0.5s;
-    color: #3F51B5
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0
-}
-
-.inputbox input:focus~span {
-    transform: translateX(-0px) translateY(-15px);
-    font-size: 12px
-}
-
-.inputbox input:valid~span {
-    transform: translateX(-0px) translateY(-15px);
-    font-size: 12px
-}
-
-.pay button {
-    height: 47px;
-    border-radius: 37px
-}
-
-.bordered {
-    box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.1);
-    padding: 20px 80px;
+@media only screen and (max-width: 500px) {
+    .price {
+        font-size: 24px;
+    }
 }

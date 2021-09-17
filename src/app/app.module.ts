@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +11,7 @@ import { BrandComponent } from './components/brand/brand.component';
 import { ColorComponent } from './components/color/color.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { CustomerComponent } from './components/customer/customer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
@@ -25,7 +26,11 @@ import { CarAddComponent } from './components/car-add/car-add.component';
 
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
-
+import { FooterComponent } from './components/footer/footer.component';
+import { SplitPipe } from './pipes/split.pipe';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +48,11 @@ import { CarUpdateComponent } from './components/car-update/car-update.component
     BrandAddComponent,
     ColorAddComponent,
     CarAddComponent,
-    CarUpdateComponent
+    CarUpdateComponent,
+    FooterComponent,
+    SplitPipe,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +67,9 @@ import { CarUpdateComponent } from './components/car-update/car-update.component
     SweetAlert2Module.forRoot(),
     SweetAlert2Module
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

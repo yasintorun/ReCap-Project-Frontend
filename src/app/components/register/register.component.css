@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+.login-page {
+    width: 100%;
+    height: 750px;background: rgb(212,111,83);
+    background: linear-gradient(90deg, rgba(212,111,83,0.742734593837535) 0%, rgba(255,171,0,0.6026785714285714) 100%);
+}
+
+.register-card {
+    height: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black !important;
+    font-family:  'Play', sans-serif;
+}
+
+
+.card-body {
+    background-color: white;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+
+.register-btn {
+    background: linear-gradient(90deg, rgba(211, 89, 55, 0.856) 0%, rgba(255, 170, 0, 0.876) 100%);
+    width: 100%;
+    color:white;
+    border:0;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 700;
+}
+
+
+.register a {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(250, 143, 67);
+    font-weight: 600;
+}
+@media only screen and (max-width: 500px) {
+    .card-body {
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+}

@@ -18,4 +18,8 @@ export class CarImageService {
     return this.httpClient.get<DataResponseModel<CarImage[]>>(this.apiUrl + "/getCarImagesByCarId?carId="+carId)
   }
 
+  getFirstImageByCarId(carId:number):Observable<DataResponseModel<CarImage>>  {
+    return this.httpClient.get<DataResponseModel<CarImage>>(this.apiUrl + "/getfirstimagebycarid?carId="+carId)
+  }
+
 }

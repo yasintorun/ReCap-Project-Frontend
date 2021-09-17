@@ -1,5 +1,5 @@
 import { CreditCard } from './creditCard';
-class Payment {
+export class Payment {
     userId: number
     carId?: number
     creditCard?: CreditCard

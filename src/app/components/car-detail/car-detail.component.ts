@@ -1,3 +1,4 @@
+import { LocalStorageService, LocalStorageKeys } from './../../services/local-storage.service';
 import { ResponseModel } from './../../models/responseModel';
 import { ToastrService } from 'ngx-toastr';
 import { Rental } from './../../models/Rental';
@@ -8,8 +9,9 @@ import { HostRoot } from './../../Constants';
 import { CarImageService } from './../../services/car-image.service';
 import { CarImage } from './../../models/carImage';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-car-detail',
   templateUrl: './car-detail.component.html',
@@ -19,12 +21,17 @@ export class CarDetailComponent implements OnInit {
   carImages: CarImage[] = []
   carDetail: CarDetail | null | undefined
 
+  carRentDatesForm:FormGroup
+
   constructor(
+    private formBuilder:FormBuilder,
     private carImageService:CarImageService,
     private activatedRoute:ActivatedRoute,
     private carService:CarService,
     private rentalService:RentalService,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private localStorageService:LocalStorageService,
+    private router:Router
     ){ }
 
   ngOnInit(): void {
@@ -32,7 +39,17 @@ export class CarDetailComponent implements OnInit {
       if(params["carId"]) {
         this.getCarImages(params["carId"])
         this.getCarDetail(params["carId"])
+      } else {
+        window.location.pathname = "/cars"
       }
+    })
+    this.createCarRentDatesForm()
+  }
+
+  createCarRentDatesForm() {
+    this.carRentDatesForm = this.formBuilder.group({
+      rentDate: ["", Validators.required],
+      returnDate: ["", Validators.required],
     })
   }
 
@@ -45,11 +62,14 @@ export class CarDetailComponent implements OnInit {
   getCarDetail(carId:number) {
     this.carService.getCarDetail(carId).subscribe(response => {
       this.carDetail = response.data
+      if(response.success == false || response.data == null) {
+        window.location.pathname = "/cars"
+      }
     })
   }
 
   getCarImagePath(imagePath:string) {
-    return HostRoot + imagePath;
+    return HostRoot + imagePath
   }
 
 
@@ -58,6 +78,19 @@ export class CarDetailComponent implements OnInit {
       return "active"
     }
     return ""
+  }
+
+  checkOut() {
+    if(this.carRentDatesForm.valid) {
+      let rentalModel = {
+        carId: this.carDetail.carId,
+        ...this.carRentDatesForm.value 
+      }
+      
+      this.localStorageService.set(LocalStorageKeys.RENTAL_CAR, JSON.stringify(rentalModel))
+      this.router.navigateByUrl('/checkout')
+      
+    }
   }
 
 

@@ -1,0 +1,68 @@
+.car-wrap {
+    width: 85%;
+    margin-bottom: 40px;
+    -webkit-box-shadow: 0px 5px 12px -1px rgb(0 0 0 / 6%);
+    -moz-box-shadow: 0px 5px 12px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0px 5px 12px -1px rgb(0 0 0 / 6%);
+    background: #fff;
+}
+.rounded {
+    border-radius: 0.25rem !important;
+}
+
+.ftco-animate {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.ftco-animated {
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.car-wrap .img {
+    width: 100%;
+    height: 220px;
+}
+.img, .blog-img, .user-img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.car-wrap .text {
+    border-top: none;
+    padding: 20px 30px 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.car-wrap .text h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+.car-wrap .text span.cat {
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.2);
+    display: block;
+    margin-bottom: 0;
+}
+.car-wrap .text .price {
+    color: #ff104c;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.car-wrap .text .price span {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.btn.btn-secondary {
+    background: var(--primaryThemeColor) !important;
+    border: 1px solid var(--primaryThemeColor) !important;
+    color: #fff !important;
+}
