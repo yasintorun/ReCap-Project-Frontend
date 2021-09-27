@@ -32,7 +32,7 @@ export class OrderDetailComponent implements OnInit {
       console.log(response)
       if(response.success && response.data) {
         this.car = response.data
-        PaymentInfo.carId = response.data.carId
+        //yPaymentInfo.carId = response.data.carId
       } else {
         this.NotFound()
       }

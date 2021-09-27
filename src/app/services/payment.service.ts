@@ -1,4 +1,3 @@
-import { Payment } from './../models/paymentInfo';
 import { PaymentInfo } from 'src/app/models/paymentInfo';
 import { ResponseModel } from './../models/responseModel';
 import { CreditCard } from './../models/creditCard';
@@ -7,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RootURL } from '../Constants';
 import { DataResponseModel } from '../models/dataResponseModel';
+import { Payment } from '../models/payment';
 
 @Injectable({
   providedIn: 'root'

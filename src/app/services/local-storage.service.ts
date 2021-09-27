@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 //Tüm key'leri burada tanımla.
 export const LocalStorageKeys = {
+  USER: "user",
   RENTAL_CAR: "rentalCar",
   TOKEN: "token",
 }
@@ -25,5 +26,12 @@ export class LocalStorageService {
     return localStorage.getItem(key)
   }
 
+  contain(key:string):boolean {
+    if(localStorage.getItem(key)) {
+      return true
+    } else {
+      return false
+    }
+  }
 
 }

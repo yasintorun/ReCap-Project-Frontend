@@ -31,6 +31,7 @@ import { SplitPipe } from './pipes/split.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ValidateDirective } from './directives/validate.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     FooterComponent,
     SplitPipe,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ValidateDirective
   ],
   imports: [
     BrowserModule,

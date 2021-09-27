@@ -1,3 +1,4 @@
+import { LoggedInGuard } from './guards/logged-in.guard';
 import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { CheckOutComponent } from './components/check-out/check-out.component';
@@ -6,7 +7,7 @@ import { BrandComponent } from './components/brand/brand.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
@@ -26,8 +27,8 @@ const routes: Routes = [
   {path:"colors",  component: ColorComponent},
   {path:"colors/add",  component: ColorAddComponent},
   {path:"checkout",  component: CheckOutComponent},
-  {path:"login",  component: LoginComponent},
-  {path:"register",  component: RegisterComponent},
+  {path:"login",  component: LoginComponent, canActivate:[LoggedInGuard]},
+  {path:"register",  component: RegisterComponent, canActivate:[LoggedInGuard]},
 ];
 
 @NgModule({

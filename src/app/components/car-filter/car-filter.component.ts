@@ -13,11 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CarFilterComponent implements OnInit {
 
+  public isCollapsed = false;
+  
   colors:Color[] = []
   brands:Brand[] = []
 
-  selectedBrand :string = ""
-  selectedColor :string = ""
+  selectedBrands :number[] = []
+  selectedColors :number[] = []
 
   constructor(
     private colorService:ColorService,
@@ -29,8 +31,8 @@ export class CarFilterComponent implements OnInit {
   ngOnInit(): void {
 
     this.activatedRoute.queryParams.subscribe(params => {
-      this.selectedColor = params["color"] ?? ""
-      this.selectedBrand = params["brand"] ?? ""
+      // this.selectedColor = params["color"] ?? ""
+      // this.selectedBrand = params["brand"] ?? ""
     })
 
     this.getAllBrands()
@@ -50,17 +52,42 @@ export class CarFilterComponent implements OnInit {
     })
   }
 
-  applyFilter():string {
-    return `cars?brand=${this.selectedBrand}&color=${this.selectedColor}`
+  // applyFilter():string {
+  //   return `cars?brand=${this.selectedBrand}&color=${this.selectedColor}`
+  // }
+
+  // resetFilter() {
+  //   this.selectedBrand = ""
+  //   this.selectedColor = ""
+  // }
+
+  checkFillArray(e:any, id:number, array:number[]) {
+    if(e.target.checked) {
+      array.push(id)
+    } else {
+      const index = array.indexOf(id)
+      if(index > -1) {
+        array.splice(index, 1)
+      }
+    }
+    }
+
+  changeCheckedBrand(e:any, id:number) {
+    this.checkFillArray(e,id,this.selectedBrands)
   }
 
-  resetFilter() {
-    this.selectedBrand = ""
-    this.selectedColor = ""
+  changeCheckedColor(e:any, id:number) {
+    this.checkFillArray(e,id,this.selectedColors)
   }
 
-
-  setCurrentBrand(brand:Brand) {
-    console.log(brand)
+  applyFilter() {
+    console.log(this.selectedColors)
+    console.log(this.selectedBrands)
+    this.arrayToString(this.selectedBrands)
   }
+
+  arrayToString(array:number[]) {
+    console.log(array.toString())
+  }
+
 }

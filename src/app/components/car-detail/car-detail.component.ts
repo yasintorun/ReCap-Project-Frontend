@@ -21,6 +21,8 @@ export class CarDetailComponent implements OnInit {
   carImages: CarImage[] = []
   carDetail: CarDetail | null | undefined
 
+  todayDate: Date
+
   carRentDatesForm:FormGroup
 
   constructor(
@@ -35,6 +37,7 @@ export class CarDetailComponent implements OnInit {
     ){ }
 
   ngOnInit(): void {
+    this.todayDate = new Date()
     this.activatedRoute.params.subscribe(params => {
       if(params["carId"]) {
         this.getCarImages(params["carId"])

@@ -1,0 +1,52 @@
+.icon-control {
+    margin-top: 5px;
+    float: right;
+    font-size: 80%;
+}
+
+.collapse-button {
+    width: 100%;
+    color: rgb(50, 24, 214);
+    background-color: transparent;
+    border:0;
+    outline-color: transparent;
+    text-align: left;
+}
+
+.collapse-button h1, h2, h3, h4, h5, h6 {
+    color:rgb(50, 24, 214);
+    font-weight: 600;
+}
+
+.card-header {
+    background-color: transparent;
+    border:0;
+}
+.filter-group {
+    border-bottom: 1px solid #e4e4e4;
+}
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+.form-row > [class*=col-] {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.card-body {
+    max-height: 200px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(50, 24, 214); 
+    border-radius: 10px;
+  }

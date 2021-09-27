@@ -1,4 +1,4 @@
-import { Payment } from './../../models/paymentInfo';
+import { RentalService } from './../../services/rental.service';
 import { HostRoot } from './../../Constants';
 import { CarImage } from './../../models/carImage';
 import { CarImageService } from './../../services/car-image.service';
@@ -12,10 +12,10 @@ import { ToastHelper } from './../../utilities/helpers/toastHelper';
 import { PaymentService } from './../../services/payment.service';
 import { CreditCard } from './../../models/creditCard';
 import { Component, OnInit } from '@angular/core';
-import { PaymentInfo } from 'src/app/models/paymentInfo';
 
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PaymentInfo } from 'src/app/models/paymentInfo';
 @Component({
   selector: 'app-check-out',
   templateUrl: './check-out.component.html',
@@ -48,6 +48,7 @@ export class CheckOutComponent implements OnInit {
               private router:Router,
               private carService:CarService,
               private carImageService:CarImageService,
+              private rentalService:RentalService,
               ) { }
 
   ngOnInit(): void {
@@ -70,14 +71,16 @@ export class CheckOutComponent implements OnInit {
   Pay2() {
     if(this.creditCardForm.valid) {
       let creditCardModel = Object.assign({expirationDate: ""}, this.creditCardForm.value)
-      console.log(creditCardModel)
+      //console.log(creditCardModel)
       creditCardModel.year = String(creditCardModel.year).substring(2,4)
       creditCardModel.expirationDate = creditCardModel.month + "/" + creditCardModel.year
-      let payment = new Payment()
+      
+      let payment = new PaymentInfo()
       payment.userId = 3 //TODO: dinamik yap.
       payment.creditCard = creditCardModel
       payment.carId = this.carDetail.carId
-      this.paymentService.Pay(payment).subscribe(response => {
+
+      this.rentalService.rentCar(payment).subscribe(response => {
         this.toastrService.success(response.message)
       }, errorResponse=> {
         this.toastrService.error(errorResponse.error.message, "Hata!")

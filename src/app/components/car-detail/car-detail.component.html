@@ -299,7 +299,7 @@
           <form [formGroup]="carRentDatesForm">
             <div class="form-group mb-3">
               <label for="rentDate">Kiralanacak tarih</label>
-              <input formControlName="rentDate" id="rentDate" class="form-control" type="date" max="{{carRentDatesForm.value?.returnDate}}"/>
+              <input formControlName="rentDate" id="rentDate" class="form-control" type="date" min="{{todayDate | date:'yyyy-MM-dd'}}" max="{{carRentDatesForm.value?.returnDate}}"/>
             </div>
             <div class="form-group">
               <label for="returnDate">Teslim tarihi</label>
