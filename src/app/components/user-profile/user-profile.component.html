@@ -1,0 +1,69 @@
+<div class="user-profile">
+    <div class="container">
+        <div class="user-profile-card row">
+            <div class="col-md-4">
+                <div class="user-profile-img">
+                    <img width="250px" height="250px" class="img img-fluid" src="https://randomuser.me/api/portraits/men/32.jpg" />
+                </div>
+                <h1 class="user-profile-hero">{{user.firstName + " " + user.lastName}}</h1>
+            </div>
+            <div class="col-md-8">
+                <div>
+                    <div class="user-info-block">
+                        <strong class="me-1">İsim:</strong> <div class="ms-sm-2 d-sm-inline">{{user.firstName + " " + user.lastName}}</div>
+                    </div>
+                    <div class="user-info-block">
+                        <strong class="me-1">E-posta:</strong> <div class="ms-sm-2 d-sm-inline">{{user.email}}</div>
+                    </div>
+                    <div class="user-info-block">
+                        <strong class="me-1">Telefon Numarası:</strong> <div class="ms-sm-2 d-sm-inline">{{user.phone}}</div>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#editUserProfile">Bilgilerimi Güncelle</button>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal  fade " id="editUserProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editUserProfileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editUserProfileLabel">Lütfen bilgilerinizi doğru bir şekilde giriniz.</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="userEditProfileForm">
+            <div class="form-floating mb-3">
+                <input type="text" formControlName="firstName" class="form-control" id="floatingFirstname" placeholder="Ad">
+                <label for="floatingFirstname">Ad</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" formControlName="lastName" class="form-control" id="floatingLastname" placeholder="Soyad">
+                <label for="floatingLastname">Soyad</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="Eposta">
+                <label for="floatingInput">Eposta</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" formControlName="phone" class="form-control" id="floatingInput" placeholder="Telefon">
+                <label for="floatingInput">Telefon</label>
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeçtim</button>
+          <button type="button" class="btn btn-success" attr.data-bs-dismiss="{{userEditProfileForm.valid?'modal':''}}" (click)="updateUser()">Kaydet</button>
+        </div>
+      </div>
+    </div>
+  </div>

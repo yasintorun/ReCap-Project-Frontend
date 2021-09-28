@@ -52,3 +52,7 @@ body {
     background-size: calc(.75em + .375rem) calc(.75em + .375rem);
     color:red;
 }
+
+.rounded-circle {
+    border-radius: 100%;
+}

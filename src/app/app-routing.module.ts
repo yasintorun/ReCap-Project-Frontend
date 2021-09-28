@@ -1,3 +1,4 @@
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { LoggedInGuard } from './guards/logged-in.guard';
 import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:"checkout",  component: CheckOutComponent},
   {path:"login",  component: LoginComponent, canActivate:[LoggedInGuard]},
   {path:"register",  component: RegisterComponent, canActivate:[LoggedInGuard]},
+  {path:"user-profile", component:UserProfileComponent},
 ];
 
 @NgModule({

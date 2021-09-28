@@ -34,4 +34,8 @@ export class LocalStorageService {
     }
   }
 
+  GetUserId():number{
+    return Number.parseInt(this.get(LocalStorageKeys.USER))
+  }
+
 }

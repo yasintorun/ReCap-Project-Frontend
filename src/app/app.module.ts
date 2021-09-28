@@ -32,6 +32,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ValidateDirective } from './directives/validate.directive';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { ValidateDirective } from './directives/validate.directive';
     SplitPipe,
     LoginComponent,
     RegisterComponent,
-    ValidateDirective
+    ValidateDirective,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
