@@ -20,8 +20,8 @@ export class CarComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       console.log(params)
       
-      if(params["brands"] || params["colors"]) {
-        this.getCarsByFilter(params["brands"], params["colors"])
+      if(params["brands"] || params["colors"] || params['minPrice'] || params['maxPrice']) {
+        this.getCarsByFilter(params["brands"], params["colors"], params['minPrice'], params['maxPrice'])
       }
       else {
         this.getCars()
@@ -47,8 +47,8 @@ export class CarComponent implements OnInit {
     })
   }
 
-  getCarsByFilter(brands:string, colors:string) {
-    this.carService.getCarByFilter(brands, colors).subscribe(response => {
+  getCarsByFilter(brands:string, colors:string, minPrice:number, maxPrice:number) {
+    this.carService.getCarByFilter(brands, colors, minPrice, maxPrice).subscribe(response => {
       this.cars = response.data
       console.log(response)
     })

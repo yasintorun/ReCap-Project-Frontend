@@ -17,6 +17,8 @@ export class CarFilterComponent implements OnInit {
   
   colors:Color[] = []
   brands:Brand[] = []
+  minPrice:number
+  maxPrice:number
 
   selectedBrands :number[] = []
   selectedColors :number[] = []
