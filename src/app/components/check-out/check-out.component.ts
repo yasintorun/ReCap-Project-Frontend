@@ -55,8 +55,7 @@ export class CheckOutComponent implements OnInit {
               private localStorageService:LocalStorageService ,
               private router:Router,
               private carService:CarService,
-              private carImageService:CarImageService,
-              private rentalService:RentalService,  
+              private carImageService:CarImageService,  
               private creditCardService:CreditCardService,
               ) { }
 
@@ -95,7 +94,7 @@ export class CheckOutComponent implements OnInit {
     payment.creditCard = creditCard
     payment.carId = this.carDetail.carId
 
-    this.rentalService.rentCar(payment, this.creditCardForm.value.save).subscribe(response => {
+    this.paymentService.rentCar(payment, this.creditCardForm.value.save).subscribe(response => {
       this.toastrService.success(response.message)
     }, errorResponse=> {
       this.toastrService.error(errorResponse.error.message, "Hata!")

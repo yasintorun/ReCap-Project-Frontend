@@ -1,0 +1,12 @@
+
+
+.order-block {
+    border: 2px solid rgb(241, 241, 241);
+    margin: 0px 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.order-block > *{
+    font-size: 115%;
+}

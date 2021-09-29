@@ -33,6 +33,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ValidateDirective } from './directives/validate.directive';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     LoginComponent,
     RegisterComponent,
     ValidateDirective,
-    UserProfileComponent
+    UserProfileComponent,
+    MyOrdersComponent
   ],
   imports: [
     BrowserModule,

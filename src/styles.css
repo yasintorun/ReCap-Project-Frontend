@@ -56,3 +56,16 @@ body {
 .rounded-circle {
     border-radius: 100%;
 }
+
+.page-header {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(73, 61, 90);
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    padding: 40px 0px;
+}
+
+.bordered {
+    border: 1px solid red;
+}

@@ -15,6 +15,7 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { ColorComponent } from './components/color/color.component';
 import { LoginComponent } from './components/login/login.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 
 const routes: Routes = [
   {path:"", pathMatch:"full", component: CarComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path:"login",  component: LoginComponent, canActivate:[LoggedInGuard]},
   {path:"register",  component: RegisterComponent, canActivate:[LoggedInGuard]},
   {path:"user-profile", component:UserProfileComponent},
+  {path:"my-orders", component:MyOrdersComponent},
 ];
 
 @NgModule({

@@ -1,0 +1,41 @@
+<div class="bg-light">
+    <div class="container bg-white">
+        <div>
+            <div>ToDo: Bu sayfayı dinamik yap.</div>
+            <h3 class="page-header">Siparişlerim</h3>
+        </div>
+
+        <div class="py-4">
+            <div class="row order-block my-2" *ngFor="let order of userOrders">
+                <div class="col-md-3 " >
+                    <img src="https://technext.github.io/carbook/images/car-2.jpg" width="300px" height="200px" />
+                </div>
+
+                <div class="col-md-3 d-flex align-items-center">
+                    <div class="text-center">
+                        <p class="fw-bold">{{order.brandName}}</p>
+                        <p class="">{{order.carName}}</p>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex align-items-center justify-content-between">
+                    <div class="text-center">
+                        <p class="fw-bold">Kiralanma Tarihi</p>
+                        <p class="">{{order.rentDate??"Bilinmiyor"}}</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="fw-bold">Teslim Tarihi</p>
+                        <p class="">{{order.returnDate??"Bilinmiyor"}}</p>
+                    </div>
+                </div>
+                <div class="col-md-2 d-flex align-items-center justify-content-center">
+                    <div class="text-center">
+                        <p class="fw-bold">Fiyat</p>
+                        <p class="">{{order.totalAmount}}₺</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
