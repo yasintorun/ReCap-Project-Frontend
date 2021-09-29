@@ -16,10 +16,11 @@
                                     <h2 class="text-dark">{{carDetail?.name??"Bilinmiyor"}}</h2>
                                 </div>
                                 <div class="alert alert-primary text-center fw-bolder pick-date mt-3">
-                                    {{showDateWithMonthName(rentalCarModel.rentDate??"")}} - {{showDateWithMonthName(rentalCarModel.returnDate??"")}}
+                                    {{showDateWithMonthName(rentalCarModel.rentDate??"")}} -
+                                    {{showDateWithMonthName(rentalCarModel.returnDate??"")}}
                                 </div>
                                 <div class="price">
-                                    Toplam Ödeme: {{totalPrice}} TL 
+                                    Toplam Ödeme: {{totalPrice}} TL
                                 </div>
 
                             </div>
@@ -30,37 +31,84 @@
             </div>
             <div class="col-md-5 pt-5 pb-5 bg-light">
                 <div class="credit-card p-md-5">
-                    <div class="pb-4">
-                        <h3 class="">Kart Detayları</h3>
+                    <div *ngIf="!useSaveCreditCard">
+
+                        <div class="pb-4">
+                            <h3 class="">Kart Detayları</h3>
+                        </div>
+                        <div class="carts-img-logo w-100"
+                            style="background-image: url(https://voltmotor.com.tr/wp-content/uploads/2019/02/carts.png);">
+
+                        </div>
+                        <div>
+                            <form [formGroup]="creditCardForm">
+                                <div class="form-group">
+                                    <input formControlName="cardName" type="text" class="form-control"
+                                        placeholder="Kart Sahibi" />
+                                </div>
+                                <div class="form-group">
+                                    <input formControlName="cardNumber" type="text" class="form-control"
+                                        placeholder="Kart Numarası">
+                                </div>
+                                <div class="cart-month-year form-group d-flex justify-content-between">
+                                    <select formControlName="month" class="form-control form-select">
+                                        <option *ngFor="let month of months">{{month}}</option>
+                                    </select>
+                                    <select formControlName="year" class="form-control form-select">
+                                        <option *ngFor="let year of years">{{year}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input formControlName="cvv" type="text" class="form-control" placeholder="CVV" />
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input formControlName="save" class="form-check-input" type="checkbox" value=""
+                                        id="flexCheckIndeterminate">
+                                    <label class="form-check-label" for="flexCheckIndeterminate">
+                                        Kredi Kartımı Kaydet
+                                    </label>
+                                </div>
+                                <button class="btn w-100 text-primary-theme" (click)="Pay2()">Ödemeyi Tamamla</button>
+
+                                
+                                <button *ngIf="userCreditCards.length > 0" class="btn btn-primary w-100 my-4" (click)="useSaveCard()">
+                                    Kayıtlı kartlarım
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="carts-img-logo w-100" style="background-image: url(https://voltmotor.com.tr/wp-content/uploads/2019/02/carts.png);">
-                    
-                    </div>
-                    <div>
-                        <form [formGroup]="creditCardForm">
-                            <div class="form-group">
-                                <input formControlName="cardName" type="text" class="form-control" placeholder="Kart Sahibi" />
+                    <div *ngIf="useSaveCreditCard">
+                        <div class="pb-4">
+                            <h3 class="">Kayıtlı Kredi kartlarım</h3>
+                        </div>
+                        <div>
+                            <div class="krediKarti row krediKarti-focus" [ngClass]="{'krediKarti-focus':selectedCreditCard==card.id}" *ngFor="let card of userCreditCards" (click)="SelectCreditCardToPay(card)">
+                                <div class="col-md-6">
+                                    <h5>{{card.cardName}}</h5>
+                                    <p>{{card.cardNumber}}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div>
+                                        <img src="https://www.atestarim.com.tr/assets/uploads/ziraat-logo.png" width="200px" height="70px" />
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input formControlName="cardNumber" type="text" class="form-control" placeholder="Kart Numarası">
+
+                            <div class="row my-3" *ngIf="selectedCreditCard != -1">
+                                <button class="btn w-100 text-primary-theme" (click)="pay(creditCard)">Ödemeyi Tamamla</button>
                             </div>
-                            <div class="cart-month-year form-group d-flex justify-content-between">
-                                <select formControlName="month" class="form-control form-select">
-                                    <option *ngFor="let month of months">{{month}}</option>
-                                </select>
-                                <select formControlName="year" class="form-control form-select">
-                                    <option *ngFor="let year of years">{{year}}</option>
-                                </select>
+
+                            <div class="row">
+                                <button class="btn btn-primary" (click)="useOtherCard()">
+                                    Başka kart Kullanmak istiyorum.
+                                </button>
                             </div>
-                            <div class="form-group">
-                                <input formControlName="cvv" type="text" class="form-control" placeholder="CVV" />
-                            </div>
-                            <button class="btn w-100 text-primary-theme" (click)="Pay2()">Ödemeyi Tamamla</button>
-                        </form>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

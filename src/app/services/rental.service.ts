@@ -21,8 +21,8 @@ export class RentalService {
     return this.httpClient.get<DataResponseModel<RentalDetail[]>>(this.apiUrl + "/getalldetails")
   }
 
-  rentCar(paymentInfo:PaymentInfo) : Observable<ResponseModel> {
-    return this.httpClient.post<ResponseModel>(this.apiUrl + "/rentcar", paymentInfo)
+  rentCar(paymentInfo:PaymentInfo, creditCardSave:boolean) : Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "/rentcar?save="+creditCardSave, paymentInfo)
   }
   
 }

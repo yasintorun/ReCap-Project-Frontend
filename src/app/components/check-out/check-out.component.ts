@@ -1,3 +1,4 @@
+import { CreditCardService } from './../../services/credit-card.service';
 import { RentalService } from './../../services/rental.service';
 import { HostRoot } from './../../Constants';
 import { CarImage } from './../../models/carImage';
@@ -24,11 +25,18 @@ import { PaymentInfo } from 'src/app/models/paymentInfo';
 export class CheckOutComponent implements OnInit {
 
   creditCard:CreditCard = {
+    id:undefined,
+    userId: undefined,
     cardName: "",
     cardNumber: "",
     expirationDate: "",
     CVV: ""
   }
+
+  userCreditCards:CreditCard[] = []
+  selectedCreditCard:number = -1
+
+  useSaveCreditCard:boolean = true
 
   rentalCarModel:Rental
   carDetail:CarDetail
@@ -48,7 +56,8 @@ export class CheckOutComponent implements OnInit {
               private router:Router,
               private carService:CarService,
               private carImageService:CarImageService,
-              private rentalService:RentalService,
+              private rentalService:RentalService,  
+              private creditCardService:CreditCardService,
               ) { }
 
   ngOnInit(): void {
@@ -56,6 +65,17 @@ export class CheckOutComponent implements OnInit {
     this.setRentalCarModel()
     this.showDateWithMonthName(this.rentalCarModel.rentDate)
     this.getTotalPrice()
+    this.getUserCreditCards()
+  }
+
+  getUserCreditCards() {
+    let userId = this.localStorageService.GetUserId()
+    this.creditCardService.getUserCreditCards(userId).subscribe(response => {
+      this.userCreditCards = response.data
+      this.useSaveCreditCard = response.data.length > 0
+    }, errorResponse => {
+      console.log(errorResponse)
+    })
   }
 
   createCreditCardForm() {
@@ -65,6 +85,20 @@ export class CheckOutComponent implements OnInit {
       month: ["", Validators.required],
       year: ["", Validators.required],
       cvv: ["", Validators.required],
+      save: [false],
+    })
+  }
+
+  pay(creditCard:CreditCard) {
+    let payment = new PaymentInfo()
+    payment.userId = this.localStorageService.GetUserId()
+    payment.creditCard = creditCard
+    payment.carId = this.carDetail.carId
+
+    this.rentalService.rentCar(payment, this.creditCardForm.value.save).subscribe(response => {
+      this.toastrService.success(response.message)
+    }, errorResponse=> {
+      this.toastrService.error(errorResponse.error.message, "Hata!")
     })
   }
 
@@ -75,16 +109,8 @@ export class CheckOutComponent implements OnInit {
       creditCardModel.year = String(creditCardModel.year).substring(2,4)
       creditCardModel.expirationDate = creditCardModel.month + "/" + creditCardModel.year
       
-      let payment = new PaymentInfo()
-      payment.userId = 3 //TODO: dinamik yap.
-      payment.creditCard = creditCardModel
-      payment.carId = this.carDetail.carId
-
-      this.rentalService.rentCar(payment).subscribe(response => {
-        this.toastrService.success(response.message)
-      }, errorResponse=> {
-        this.toastrService.error(errorResponse.error.message, "Hata!")
-      })
+      this.pay(this.creditCard)
+      
     }else {
       console.log("Kredi kartı hatalı")
     }
@@ -139,6 +165,30 @@ export class CheckOutComponent implements OnInit {
     }, errorResponse => {
     //  console.log(errorResponse)
     })
+  }
+
+
+  SelectCreditCardToPay(creditCard:CreditCard) {
+    this.selectedCreditCard = creditCard.id
+    console.log(creditCard)
+    this.creditCard = creditCard
+  }
+
+  useOtherCard() {
+    this.useSaveCreditCard = false
+    this.creditCard = {
+      id:undefined,
+      userId: undefined,
+      cardName: "",
+      cardNumber: "",
+      expirationDate: "",
+      CVV: ""
+    }
+    this.selectedCreditCard = -1
+  }
+
+  useSaveCard() {
+    this.useSaveCreditCard = true
   }
 
 }

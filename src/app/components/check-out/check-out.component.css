@@ -57,3 +57,23 @@
         font-size: 24px;
     }
 }
+
+.krediKarti {
+    background-color: rgb(212 212 203);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.krediKarti:hover {
+    cursor: pointer;
+}
+
+.krediKarti-focus {
+    border: 3px dashed rgb(105 105 105);
+}
+
+.krediKarti h5 {
+    color: rgb(44, 44, 44);
+    font-weight: 600;
+}
