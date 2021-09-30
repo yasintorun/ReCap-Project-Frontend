@@ -34,6 +34,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ValidateDirective } from './directives/validate.directive';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
     RegisterComponent,
     ValidateDirective,
     UserProfileComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

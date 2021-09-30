@@ -1,3 +1,4 @@
+import { ChangePassword } from './../models/changePassword';
 import { ResponseModel } from './../models/responseModel';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -20,6 +21,10 @@ export class UserService {
 
   updateUser(user:User):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiUrl + "/update", user)
+  }
+
+  changePassword(changePassword:ChangePassword):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "/changepassword", changePassword)
   }
 
 }

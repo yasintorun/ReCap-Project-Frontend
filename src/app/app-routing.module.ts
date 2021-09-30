@@ -1,3 +1,4 @@
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { LoggedInGuard } from './guards/logged-in.guard';
 import { LoginGuard } from './guards/login.guard';
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path:"register",  component: RegisterComponent, canActivate:[LoggedInGuard]},
   {path:"user-profile", component:UserProfileComponent},
   {path:"my-orders", component:MyOrdersComponent},
+  {path:"change-password", component:ChangePasswordComponent},
 ];
 
 @NgModule({
