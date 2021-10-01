@@ -1,8 +1,7 @@
-<div class="card w-50 container p-4 mb-3 mt-3">
-    <div class="card-header bg-card-header">
-        Renkler
+<div class="w-50 container p-4 mb-3 mt-3">
+    <div>
+        <h3 class="page-header">Araba Renkleri</h3>
     </div>
-
     <div class="mb-3">
         <label for="filterText" class="form-label">Renk ara</label>
         <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="ara">
@@ -17,7 +16,7 @@
             (click)="setCurrentColor(color)"
             *ngFor="let color of colors | SearchPipe:'name':filterText"
             [class]="getCurrentColorClass(color)"
-            class="list-group-item list-group-item-action list-group-item-info d-flex justify-content-between w-100 align-items-center">
+            class="list-group-item list-group-item-action list-group-item d-flex justify-content-between w-100 align-items-center">
             
             {{color.name}}
             <div>

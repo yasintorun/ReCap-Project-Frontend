@@ -35,6 +35,9 @@ import { ValidateDirective } from './directives/validate.directive';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { MainDashboardComponent } from './layout/main-dashboard/main-dashboard.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import { AdminCarListComponent } from './components/admin/admin-car-list/admin-car-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +63,10 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     ValidateDirective,
     UserProfileComponent,
     MyOrdersComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    MainDashboardComponent,
+    AdminDashboardComponent,
+    AdminCarListComponent
   ],
   imports: [
     BrowserModule,
