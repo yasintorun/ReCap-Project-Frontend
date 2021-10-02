@@ -27,4 +27,8 @@ export class UserService {
     return this.httpClient.post<ResponseModel>(this.apiUrl + "/changepassword", changePassword)
   }
 
+  getTotalUserCount():Observable<DataResponseModel<number>>{
+    return this.httpClient.get<DataResponseModel<number>>(this.apiUrl + "/gettotalusercount")
+  }
+
 }

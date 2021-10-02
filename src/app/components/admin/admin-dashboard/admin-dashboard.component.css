@@ -110,3 +110,22 @@ body {
       border-radius: 0 !important;
       text-align: left !important;
   }
+
+
+  .btn-secondary {
+    background-color: #2f353a;
+    border:0;
+  }
+
+  .btn-secondary:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .btn-active {
+    background-color:rgb(82 103 122);
+  }
+
+  .btn-home-active {
+    background-color: rgb(238, 188, 94);
+  }

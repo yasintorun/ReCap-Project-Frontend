@@ -61,6 +61,8 @@ export class CarService {
     return this.httpClient.get<DataResponseModel<number>>(this.apiUrl + `/getcartotalprice?carId=${carId}&rentDate=${rentDate}&returnDate=${returnDate}`)
   }
 
-
+  getTotalCarCount():Observable<DataResponseModel<number>>{
+    return this.httpClient.get<DataResponseModel<number>>(this.apiUrl + "/totalcarcount")
+  }
 
 }

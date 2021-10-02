@@ -17,7 +17,7 @@ export class BrandComponent implements OnInit {
   filterText :string = ""
   
   brandEditForm:FormGroup
-
+  brandAddForm:FormGroup
   constructor(private brandService:BrandService,
               private formBuilder:FormBuilder,
               private toastrService:ToastrService,) { }
@@ -25,11 +25,18 @@ export class BrandComponent implements OnInit {
   ngOnInit(): void {
     this.getBrands()
     this.createBrandEditForm()
+    this.createBrandAddForm()
   }
 
   createBrandEditForm() {
     this.brandEditForm = this.formBuilder.group({
       name: ["", Validators.required],
+    })
+  }
+
+  createBrandAddForm() {
+    this.brandAddForm = this.formBuilder.group({
+      name: ["", Validators.required]
     })
   }
 
@@ -49,6 +56,20 @@ export class BrandComponent implements OnInit {
       return "active"
     }
     return ""
+  }
+
+  addBrand()  {
+    if(this.brandAddForm.valid) {
+      let brandModel = Object.assign({}, this.brandAddForm.value)
+      this.brandService.add(brandModel).subscribe(response => {
+        this.toastrService.success(response.message)
+        this.getBrands()
+      }, errorResponse => {
+        console.log(errorResponse)
+      })
+    } else{
+      this.toastrService.error("Hatalı Giriş")
+    }
   }
 
   updateBrand() {

@@ -1,0 +1,33 @@
+<div class="container">
+    <div>
+        <div>
+            <h3 class="page-header">Tüm Ödemeler</h3>
+        </div>
+        <div>
+            <table class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Rental Id</th>
+                    <th scope="col">Credit Card Number</th>
+                    <th scope="col">Pay Amount</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let payment of payments">
+                    <th scope="row">{{payment.id}}</th>
+                    <td>{{payment.rentalId}}</td>
+                    <td>{{payment.creditCardNumber}}</td>   
+                    <td>{{payment.amount}}</td>
+                    <td>{{payment.date}}</td>
+                    <td>
+                        <button class="btn btn-success">Detay</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

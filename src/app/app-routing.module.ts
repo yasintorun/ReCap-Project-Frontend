@@ -1,3 +1,6 @@
+import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
+import { AdminRentalListComponent } from './components/admin/admin-rental-list/admin-rental-list.component';
+import { AdminPaymentListComponent } from './components/admin/admin-payment-list/admin-payment-list.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { MainDashboardComponent } from './layout/main-dashboard/main-dashboard.component';
@@ -36,14 +39,25 @@ const routes: Routes = [
   {path:"my-orders", component:MyOrdersComponent},
   {path:"change-password", component:ChangePasswordComponent},
   
+  
+  {path:"", component: AdminHomeComponent},
+
   //admin dashboard için routing
   {path:"admin", children: [
+    {path:"", component: AdminHomeComponent},
     {path:"cars",  component: AdminCarListComponent},
     {path:"cars/detail/:carId",  component: CarDetailComponent},
-    {path:"customers",  component: CustomerComponent},
-    {path:"brands",  component: BrandComponent},
     {path:"cars/add",  component: CarAddComponent, canActivate:[LoginGuard]},
+    
+    {path:"customers",  component: CustomerComponent},
+    
+    {path:"payments",  component: AdminPaymentListComponent},
+    
+    {path:"rentals",  component: AdminRentalListComponent},
+    
+    {path:"brands",  component: BrandComponent},
     {path:"brands/add",  component: BrandAddComponent},
+    
     {path:"colors",  component: ColorComponent},
     {path:"colors/add",  component: ColorAddComponent},
   ]}

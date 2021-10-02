@@ -75,12 +75,22 @@ body {
     width: 25%;
 }
 
+.w-md-50{
+    width: 50% !important;
+}
+
 @media only screen and (max-width: 500px) {
     .w-md-25{
         width: 100% !important;
     }
+}
+@media only screen and (max-width: 1200px) {
+    .w-md-50{
+        width: 100% !important;
+    }
 
 }
+
 
 
 .list-group .list-group-item.active {
@@ -88,4 +98,13 @@ body {
     color: #fff;
     background-color: #1d2b3f;
     border-color: #1d2b3f;
+}
+
+
+.fs-30 {
+    font-size: 30px;
+}
+
+.fs-40 {
+    font-size: 40px;
 }

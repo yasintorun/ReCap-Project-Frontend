@@ -24,5 +24,9 @@ export class RentalService {
   rentCar(paymentInfo:PaymentInfo, creditCardSave:boolean) : Observable<ResponseModel> {
     return this.httpClient.post<ResponseModel>(this.apiUrl + "/rentcar?save="+creditCardSave, paymentInfo)
   }
+
+  getTotalRentalCount():Observable<DataResponseModel<number>>{
+    return this.httpClient.get<DataResponseModel<number>>(this.apiUrl + "/totalrentalcount")
+  }
   
 }

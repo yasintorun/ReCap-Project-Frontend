@@ -16,6 +16,8 @@ export class ColorComponent implements OnInit {
 
   colorEditForm:FormGroup
 
+  colorAddForm:FormGroup
+
   constructor(private colorService : ColorService,
               private formBuilder:FormBuilder,
               private toastrService:ToastrService,) { }
@@ -23,12 +25,19 @@ export class ColorComponent implements OnInit {
   ngOnInit(): void {
     this.getColors()
     this.createColorEditForm()
+    this.createColorAddForm()
   }
 
   
   createColorEditForm() {
     this.colorEditForm = this.formBuilder.group({
       name: ["", Validators.required],
+    })
+  }
+
+  createColorAddForm() {
+    this.colorAddForm = this.formBuilder.group({
+      name: ["", Validators.required]
     })
   }
 
@@ -47,6 +56,20 @@ export class ColorComponent implements OnInit {
       return "active"
     }
     return ""
+  }
+
+  addColor() {
+    if(this.colorAddForm.valid) {
+      let colorModel = Object.assign({}, this.colorAddForm.value)
+      this.colorService.add(colorModel).subscribe(response => {
+        this.toastrService.success(response.message)
+        this.getColors()
+      }, errorResponse => {
+        console.log(errorResponse)
+      })
+    } else {
+      this.toastrService.error("Hatalı Giriş")
+    }
   }
 
   updateColor() {

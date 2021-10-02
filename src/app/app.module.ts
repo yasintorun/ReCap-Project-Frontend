@@ -38,6 +38,9 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { MainDashboardComponent } from './layout/main-dashboard/main-dashboard.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { AdminCarListComponent } from './components/admin/admin-car-list/admin-car-list.component';
+import { AdminPaymentListComponent } from './components/admin/admin-payment-list/admin-payment-list.component';
+import { AdminRentalListComponent } from './components/admin/admin-rental-list/admin-rental-list.component';
+import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +69,10 @@ import { AdminCarListComponent } from './components/admin/admin-car-list/admin-c
     ChangePasswordComponent,
     MainDashboardComponent,
     AdminDashboardComponent,
-    AdminCarListComponent
+    AdminCarListComponent,
+    AdminPaymentListComponent,
+    AdminRentalListComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,

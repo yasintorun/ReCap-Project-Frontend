@@ -30,4 +30,13 @@ export class PaymentService {
     return this.httpClient.get<DataResponseModel<OrderDetail[]>>(this.apiUrl + "/getalluserorders?userId="+userId)
   }
 
+
+  getAllPayments():Observable<DataResponseModel<Payment[]>>{
+    return this.httpClient.get<DataResponseModel<Payment[]>>(this.apiUrl +"/getall")
+  }
+
+  getTotalMoneyEarned():Observable<DataResponseModel<number>> {
+    return this.httpClient.get<DataResponseModel<number>>(this.apiUrl + "/totalmoneyearned")
+  }
+
 }

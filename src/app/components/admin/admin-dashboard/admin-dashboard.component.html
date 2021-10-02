@@ -14,46 +14,46 @@
   <div class="container-fluid">
     <div class="row">
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block dashboard-sidebar sidebar collapse">
-        <div class="position-sticky pt-3">
+        <div class="position-sticky">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" routerLink="admin">
+              <button class="btn btn-secondary w-100 py-3" [routerLinkActive]="['btn-home-active']" aria-current="page" routerLink="admin">
                 <i class="bi bi-house"></i>
                 Ana Sayfa
-              </a>
+              </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="admin/rentals">
+              <button class="btn btn-secondary w-100 py-3" [routerLinkActive]="['btn-active']" routerLink="admin/rentals">
                 <i class="bi bi-file"></i>
                 Tüm Siparişler
-              </a>
+              </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="admin/cars">
+              <button class="btn btn-secondary w-100 py-3" [routerLinkActive]="['btn-active']" routerLink="admin/cars">
                 <i class="bi bi-shopping"></i>
                 Arabalar
-              </a>
+              </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="admin/customers">
+              <button class="btn btn-secondary w-100 py-3" [routerLinkActive]="['btn-active']" routerLink="admin/customers">
                 <i class="bi bi-user"></i>
                 Müşteriler
-              </a>
+              </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="admin/brands" >
+              <button class="btn btn-secondary w-100 py-3" [routerLinkActive]="['btn-active']" routerLink="admin/brands" >
                 <span data-feather="bar-chart-2"></span>
                 Markalar
-              </a>
+              </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="admin/colors">
+              <button class="btn btn-secondary w-100 py-3" [routerLinkActive]="['btn-active']" routerLink="admin/colors">
                 <span data-feather="layers"></span>
                 Renkler
-              </a>
+              </button>
             </li>
             <li class="nav-item w-100">
-                <button class="btn btn-secondary w-100" routerLink="admin/payments">
+                <button class="btn btn-secondary w-100 py-3" [routerLinkActive]="['btn-active']" routerLink="admin/payments">
                   <span data-feather="layers"></span>
                   Tüm Ödemeler
                 </button>
