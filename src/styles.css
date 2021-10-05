@@ -78,9 +78,16 @@ body {
 .w-md-50{
     width: 50% !important;
 }
+.w-md-75 {
+    width: 75%;
+}
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
     .w-md-25{
+        width: 100% !important;
+    }
+
+    .w-md-75 {
         width: 100% !important;
     }
 }

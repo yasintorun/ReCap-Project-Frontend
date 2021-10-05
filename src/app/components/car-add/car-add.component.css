@@ -1,0 +1,14 @@
+.step-item {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #8b8bb9;
+}
+
+.step-item i {
+    color: rgb(0, 255, 0);
+}
+
+.step {
+    border-bottom: 1px solid rgb(231, 231, 231);
+}

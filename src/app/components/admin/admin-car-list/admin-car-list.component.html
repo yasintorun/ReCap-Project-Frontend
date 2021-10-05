@@ -1,35 +1,38 @@
 <div class="container">
+  <div>
     <div>
-        <div>
-            <h3 class="page-header">Tüm Arabalar</h3>
-        </div>
-        <div>
-            <table class="table table-hover table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">Car Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Color</th>
-                    <th scope="col">Daily Price</th>
-                    <th scope="col">Findex Score</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let car of cars">
-                    <th scope="row">{{car.carId}}</th>
-                    <td>{{car.name}}</td>
-                    <td>{{car.brandName}}</td>   
-                    <td>{{car.colorName}}</td>
-                    <td>{{car.dailyPrice}}</td>
-                    <td>{{car.findexPuan}}</td>
-                    <td>
-                        <button class="btn btn-success">Detay</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
+      <h3 class="page-header">Tüm Arabalar</h3>
     </div>
+    <div class="d-flex justify-content-end">
+      <a class="btn btn-success" routerLink="/admin/cars/add">Yeni Araba Ekle</a>
+    </div>
+    <div>
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Car Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Color</th>
+            <th scope="col">Daily Price</th>
+            <th scope="col">Findex Score</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let car of cars">
+            <th scope="row">{{car.carId}}</th>
+            <td>{{car.name}}</td>
+            <td>{{car.brandName}}</td>
+            <td>{{car.colorName}}</td>
+            <td>{{car.dailyPrice}}</td>
+            <td>{{car.findexPuan}}</td>
+            <td>
+              <button class="btn btn-secondary" routerLink="/admin/cars/detail/{{car.carId}}">Detay</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

@@ -10,7 +10,6 @@ import { Component, OnInit } from '@angular/core';
 export class AdminCarListComponent implements OnInit {
 
   cars:CarDetail[] = []
-  
   constructor(
     private carService:CarService,
   ) { }

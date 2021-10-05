@@ -1,48 +1,74 @@
-<div class="content">
-    <div col-md-12>
-        <div class="card">
-            <div class="card-header">
-                <h5 class="title">Araba Ekle</h5>
-            </div>
-            <div class="card-body">
-                <form [formGroup]="carAddForm">
-                    <div class="form-group mb-3">
-                        <label for="brandSelect">Marka: </label>
-                        <select id="brandSelect" class="form-select" formControlName="brandId">
-                            <option *ngFor="let brand of brands" value="{{brand.id}}" >
-                                {{brand.name}}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="colorSelect">Renk: </label>
-                        <select id="colorSelect" class="form-select" formControlName="colorId">
-                            <option *ngFor="let color of colors" value="{{color.id}}" >
-                                {{color.name}}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="dailyPrice">Model yılı: </label>
-                        <select id="colorSelect" class="form-select" formControlName="modelYear">
-                            <option *ngFor="let year of years" value="{{year}}" >
-                                {{year}}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="dailyPrice">Günlük Fiyatı: </label>
-                        <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" min="0" max="1000000" placeholder="Fiyat" />
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Açıklama</label>
-                        <textarea formControlName="description" class="form-control" placeholder="Araba hakkında detaylı bilgi giriniz." id="description" rows="5"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-primary" (click)="add()">Ekle</button>
-            </div>
-        </div>
+<div class="content mt-4 w-md-75 m-auto">
+    <div class="csard-header">
+        <h3 class="page-header">Yeni Araba Ekle</h3>
     </div>
+    <div class="mb-4">
+
+        <ul class="nav nav-pills" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Genel Bilgiler</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Teknik Bilgiler</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Fotoğraflar</button>
+            </li>
+          </ul>
+          <div class="tab-content my-5" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="">
+                    <div class="carad-body">
+                        <form [formGroup]="carAddForm">
+                            <div class="form-group mb-3">
+                                <label for="brandSelect">Araba Başlığı: </label>
+                                <input type="text" class="form-control" formControlName="name" placeholder="Araba başlığı">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="brandSelect">Marka: </label>
+                                <select id="brandSelect" class="form-select" formControlName="brandId">
+                                    <option *ngFor="let brand of brands" value="{{brand.id}}" >
+                                        {{brand.name}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="colorSelect">Renk: </label>
+                                <select id="colorSelect" class="form-select" formControlName="colorId">
+                                    <option *ngFor="let color of colors" value="{{color.id}}" >
+                                        {{color.name}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="dailyPrice">Model yılı: </label>
+                                <select id="colorSelect" class="form-select" formControlName="modelYear">
+                                    <option *ngFor="let year of years" value="{{year}}" >
+                                        {{year}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="dailyPrice">Günlük Fiyatı: </label>
+                                <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" min="0" max="1000000" placeholder="Fiyat" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="dailyPrice">Findeks Puanı: </label>
+                                <input type="number" id="findexPuan" formControlName="findexPuan" class="form-control" min="0" max="1900" placeholder="Findeks Puanı" />
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Açıklama</label>
+                                <textarea formControlName="description" class="form-control" placeholder="Araba hakkında detaylı bilgi giriniz." id="description" rows="5"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">dsdsd</div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">asdasdsadasd</div>
+          </div>
+    </div>
+    <button class="btn btn-success" (click)="add()">Arabayı Ekle</button>
+
+
 </div>

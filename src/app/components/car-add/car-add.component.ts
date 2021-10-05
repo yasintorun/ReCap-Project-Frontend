@@ -37,7 +37,9 @@ export class CarAddComponent implements OnInit {
       colorId: ["", Validators.required],
       modelYear:["",Validators.required ],
       dailyPrice:["",Validators.required],
-      description: ["", Validators.required]
+      description: ["", Validators.required],
+      name: ["", Validators.required],
+      findexPuan: ["", Validators.required]
     })
   }
 
@@ -52,9 +54,10 @@ export class CarAddComponent implements OnInit {
       this.carService.add(carModel).subscribe(response => {
         this.toastrService.success(response.message)
       }, errorResponse => {
-        for (let i = 0; i < errorResponse.error.Errors.length; i++) {
-          this.toastrService.error(errorResponse.error.Errors[i].ErrorMessage, "Hata");
-        }
+        console.log(errorResponse)
+        // for (let i = 0; i < errorResponse.error.Errors.length; i++) {
+        //   this.toastrService.error(errorResponse.error.Errors[i].ErrorMessage, "Hata");
+        // }
       });
 
     } else {
