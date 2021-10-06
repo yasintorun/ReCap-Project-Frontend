@@ -1,5 +1,5 @@
 import { CarService } from './../../../services/car.service';
-import { CarDetail } from './../../../models/carDetail';
+import { CarAllDetail } from '../../../models/carAllDetail';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminCarListComponent implements OnInit {
 
-  cars:CarDetail[] = []
+  cars:CarAllDetail[] = []
   constructor(
     private carService:CarService,
   ) { }

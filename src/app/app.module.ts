@@ -16,6 +16,8 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { SearchPipe } from './pipes/search.pipe';
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
 
+import { NgxSpinnerModule } from "ngx-spinner"; //spinner
+
 import { ToastrModule } from 'ngx-toastr';
 ​import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
@@ -85,7 +87,8 @@ import { AdminHomeComponent } from './components/admin/admin-home/admin-home.com
     BrowserAnimationsModule,
     ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
-    SweetAlert2Module
+    SweetAlert2Module,
+    NgxSpinnerModule,
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true},

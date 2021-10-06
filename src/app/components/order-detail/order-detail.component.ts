@@ -1,5 +1,5 @@
 import { CarService } from './../../services/car.service';
-import { CarDetail } from './../../models/carDetail';
+import { CarAllDetail } from '../../models/carAllDetail';
 import { Car } from './../../models/car';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +14,7 @@ export class OrderDetailComponent implements OnInit {
 
   constructor(private activatedRoute:ActivatedRoute, private carService:CarService) { }
 
-  car:CarDetail
+  car:CarAllDetail
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {

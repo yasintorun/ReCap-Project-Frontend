@@ -2,7 +2,7 @@ import { Brand } from './../../models/brand';
 import { CarService } from './../../services/car.service';
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/models/car';
-import { CarDetail } from 'src/app/models/carDetail';
+import { CarAllDetail } from 'src/app/models/carAllDetail';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./car.component.css']
 })
 export class CarComponent implements OnInit {
-  cars: CarDetail[] = []
+  cars: CarAllDetail[] = []
   filterText: string = ""
 
   constructor(private carService:CarService, private activatedRoute:ActivatedRoute) { }

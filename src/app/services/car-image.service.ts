@@ -1,3 +1,4 @@
+import { ResponseModel } from './../models/responseModel';
 import { CarImage } from './../models/carImage';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -21,5 +22,12 @@ export class CarImageService {
   getFirstImageByCarId(carId:number):Observable<DataResponseModel<CarImage>>  {
     return this.httpClient.get<DataResponseModel<CarImage>>(this.apiUrl + "/getfirstimagebycarid?carId="+carId)
   }
+
+  uploadCarImage(file:File):Observable<ResponseModel> {
+    const formData = new FormData()
+    formData.append('imageFile', file)
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "/add", formData)
+  }
+
 
 }

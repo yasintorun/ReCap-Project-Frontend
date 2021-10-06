@@ -1,33 +1,52 @@
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-scale" [fullScreen] = "true">
+    <p style="color: white" >{{spinnerText}}</p>
+</ngx-spinner>
+
 <div class="content mt-4 w-md-75 m-auto">
     <div class="csard-header">
         <h3 class="page-header">Yeni Araba Ekle</h3>
     </div>
     <div class="mb-4">
-
+        <div class="d-flex justify-content-end my-2">
+        </div>
         <ul class="nav nav-pills" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Genel Bilgiler</button>
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+                    <span [innerHTML]="carAddForm.valid ? successResultIcon : errorResultIcon"></span>
+                    Genel Bilgiler
+                </button>
             </li>
             <li class="nav-item" role="presentation">
-              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Teknik Bilgiler</button>
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                    <span [innerHTML]="carDetailAddForm.valid ? successResultIcon : errorResultIcon"></span>
+                    Teknik Bilgiler
+                </button>
             </li>
             <li class="nav-item" role="presentation">
-              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Fotoğraflar</button>
+                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">
+                    <span [innerHTML]="carPhotos.length>0 ? successResultIcon : errorResultIcon"></span>
+                    Fotoğraflar
+                </button>
             </li>
-          </ul>
-          <div class="tab-content my-5" id="myTabContent">
+            <li class="ms-3" *ngIf="checkCarAddButton()">
+                <button class="btn btn-success" (click)="AddCar()">Arabayı Ekle</button>
+            </li>
+        </ul>
+        <div class="tab-content my-5" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <div class="">
+                <div class="tab-item">
                     <div class="carad-body">
                         <form [formGroup]="carAddForm">
                             <div class="form-group mb-3">
                                 <label for="brandSelect">Araba Başlığı: </label>
-                                <input type="text" class="form-control" formControlName="name" placeholder="Araba başlığı">
+                                <input type="text" class="form-control" formControlName="name"
+                                    placeholder="Araba başlığı">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="brandSelect">Marka: </label>
                                 <select id="brandSelect" class="form-select" formControlName="brandId">
-                                    <option *ngFor="let brand of brands" value="{{brand.id}}" >
+                                    <option *ngFor="let brand of brands" value="{{brand.id}}">
                                         {{brand.name}}
                                     </option>
                                 </select>
@@ -35,40 +54,88 @@
                             <div class="form-group mb-3">
                                 <label for="colorSelect">Renk: </label>
                                 <select id="colorSelect" class="form-select" formControlName="colorId">
-                                    <option *ngFor="let color of colors" value="{{color.id}}" >
+                                    <option *ngFor="let color of colors" value="{{color.id}}">
                                         {{color.name}}
                                     </option>
                                 </select>
                             </div>
-                            <div class="form-group mb-3">
-                                <label for="dailyPrice">Model yılı: </label>
-                                <select id="colorSelect" class="form-select" formControlName="modelYear">
-                                    <option *ngFor="let year of years" value="{{year}}" >
-                                        {{year}}
-                                    </option>
-                                </select>
-                            </div>
+
                             <div class="form-group mb-3">
                                 <label for="dailyPrice">Günlük Fiyatı: </label>
-                                <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" min="0" max="1000000" placeholder="Fiyat" />
+                                <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control"
+                                    min="0" max="1000000" placeholder="Fiyat" />
                             </div>
                             <div class="form-group mb-3">
                                 <label for="dailyPrice">Findeks Puanı: </label>
-                                <input type="number" id="findexPuan" formControlName="findexPuan" class="form-control" min="0" max="1900" placeholder="Findeks Puanı" />
+                                <input type="number" id="findexPuan" formControlName="findexPuan" class="form-control"
+                                    min="0" max="1900" placeholder="Findeks Puanı" />
                             </div>
                             <div class="form-group">
                                 <label for="description">Açıklama</label>
-                                <textarea formControlName="description" class="form-control" placeholder="Araba hakkında detaylı bilgi giriniz." id="description" rows="5"></textarea>
+                                <textarea formControlName="description" class="form-control"
+                                    placeholder="Araba hakkında detaylı bilgi giriniz." id="description"
+                                    rows="5"></textarea>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">dsdsd</div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">asdasdsadasd</div>
-          </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="tab-item">
+                    <div class="carad-body">
+                        <form [formGroup]="carDetailAddForm">
+                            <div class="form-group mb-3">
+                                <label for="modelYear">Model yılı: </label>
+                                <select id="modelYear" class="form-select" formControlName="modelYear">
+                                    <option *ngFor="let year of years" value="{{year}}">
+                                        {{year}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="transmissionSelect">Vites Tipi: </label>
+                                <select id="transmissionSelect" class="form-select" formControlName="transmission">
+                                    <option *ngFor="let trans of transmissions" value="{{trans}}">
+                                        {{trans}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="fuelSelect">Yakıt tipi: </label>
+                                <select id="fuelSelect" class="form-select" formControlName="fuel">
+                                    <option *ngFor="let fuel of fuels" value="{{fuel}}">
+                                        {{fuel}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="seats">Koltuk Sayısı: </label>
+                                <input type="number" id="seats" formControlName="seatCount" class="form-control" min="1"
+                                    max="10" placeholder="Fiyat" />
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="alert alert-info">En az 1, en fazla 2 fotoğraf yükleyebilirsiniz.</div>
+                <form>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Araba fotoğraflarını seçin ve yükleyin</label>
+                        <input class="form-control" type="file" id="formFile" accept="image/*" (change)="imagePreview($event)" [disabled]="!checkCarImageCount()">
+                      </div>
+                </form>
+                <div class="d-flex flex-wrap">
+                    <div class="car-photo me-4" *ngFor="let filePath of filePaths; let i = index">
+                        <img [src]="filePath">
+                        <p class="my-2 text-center">Fotoğraf {{i + 1}}</p>
+                        <button class="btn btn-danger" (click)="removePhoto(i)">Kaldır</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <button class="btn btn-success" (click)="add()">Arabayı Ekle</button>
 
 
 </div>

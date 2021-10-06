@@ -4,7 +4,7 @@ import { HostRoot } from './../../Constants';
 import { CarImage } from './../../models/carImage';
 import { CarImageService } from './../../services/car-image.service';
 import { Rental } from './../../models/Rental';
-import { CarDetail } from './../../models/carDetail';
+import { CarAllDetail } from '../../models/carAllDetail';
 import { CarService } from './../../services/car.service';
 import { LocalStorageService, LocalStorageKeys } from './../../services/local-storage.service';
 import { ResponseModel } from './../../models/responseModel';
@@ -39,7 +39,7 @@ export class CheckOutComponent implements OnInit {
   useSaveCreditCard:boolean = true
 
   rentalCarModel:Rental
-  carDetail:CarDetail
+  carDetail:CarAllDetail
   carImage:CarImage
   creditCardForm:FormGroup
 

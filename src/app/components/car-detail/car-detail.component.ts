@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Rental } from './../../models/Rental';
 import { RentalService } from './../../services/rental.service';
 import { CarService } from './../../services/car.service';
-import { CarDetail } from 'src/app/models/carDetail';
+import { CarAllDetail } from 'src/app/models/carAllDetail';
 import { HostRoot } from './../../Constants';
 import { CarImageService } from './../../services/car-image.service';
 import { CarImage } from './../../models/carImage';
@@ -19,7 +19,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class CarDetailComponent implements OnInit {
   carImages: CarImage[] = []
-  carDetail: CarDetail | null | undefined
+  carDetail: CarAllDetail | null | undefined
 
   todayDate: Date
 
