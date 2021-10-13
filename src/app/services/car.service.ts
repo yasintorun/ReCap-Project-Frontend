@@ -13,7 +13,6 @@ import { Car } from '../models/car';
 export class CarService {
 
   apiUrl = RootURL + "/cars"
-  apiUrlForDetail = RootURL + "/cardetails"
 
   constructor(private httpClient:HttpClient) { }
 
@@ -65,11 +64,6 @@ export class CarService {
 
   getTotalCarCount():Observable<DataResponseModel<number>>{
     return this.httpClient.get<DataResponseModel<number>>(this.apiUrl + "/totalcarcount")
-  }
-
-
-  AddCarDetail(carDetail:CarDetail):Observable<ResponseModel> {
-    return this.httpClient.post<ResponseModel>(this.apiUrlForDetail + "/add", carDetail)
   }
 
 }

@@ -115,3 +115,27 @@ body {
 .fs-40 {
     font-size: 40px;
 }
+
+
+.table > * {
+    color: gray;
+}
+.table thead th {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #fff !important;
+    line-height: 1.4;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    background-color: rgb(136 121 191);
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    --bs-table-accent-bg: rgb(201 201 201 / 5%) !important;
+    color: rgb(112, 112, 112);
+}
+
+tbody th, tbody td {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}

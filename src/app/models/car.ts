@@ -3,8 +3,11 @@ export interface Car {
     brandId: number
     colorId: number
     name:string
-    modelYear: number
     dailyPrice: number
     description: string
     findexPuan: number
+    modelYear:number
+    fuel:string
+    transmission:string
+    seatCount:number
 }

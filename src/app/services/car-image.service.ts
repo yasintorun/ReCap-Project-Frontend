@@ -23,9 +23,10 @@ export class CarImageService {
     return this.httpClient.get<DataResponseModel<CarImage>>(this.apiUrl + "/getfirstimagebycarid?carId="+carId)
   }
 
-  uploadCarImage(file:File):Observable<ResponseModel> {
+  uploadCarImage(file:File, carId:number):Observable<ResponseModel> {
     const formData = new FormData()
     formData.append('imageFile', file)
+    formData.append('carId', carId.toString())
     return this.httpClient.post<ResponseModel>(this.apiUrl + "/add", formData)
   }
 

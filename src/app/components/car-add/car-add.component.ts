@@ -32,7 +32,7 @@ export class CarAddComponent implements OnInit {
   carPhotoForm:FormGroup
   carPhotos:File[] = []
   
-  transmissions:string[] = ["Manuel", "Oto"] //vites tipleri
+  transmissions:string[] = ["Manuel", "Otomatik"] //vites tipleri
   fuels:string[] = ["Dizel", "Benzin", "Lpg", "Gaz"] // Yakıt tipleri
 
   spinnerText:string = ""
@@ -73,29 +73,6 @@ export class CarAddComponent implements OnInit {
     })
   }
 
-  add() {
-    if(this.carAddForm.valid) {
-      let carModel = Object.assign({}, this.carAddForm.value)
-
-      carModel.brandId = parseInt(this.carAddForm.value.brandId)
-      carModel.colorId = parseInt(this.carAddForm.value.colorId)
-      carModel.modelYear = parseInt(this.carAddForm.value.modelYear)
-      console.log(carModel)
-      this.carService.add(carModel).subscribe(response => {
-        this.toastrService.success(response.message)
-      }, errorResponse => {
-        console.log(errorResponse)
-        // for (let i = 0; i < errorResponse.error.Errors.length; i++) {
-        //   this.toastrService.error(errorResponse.error.Errors[i].ErrorMessage, "Hata");
-        // }
-      });
-
-    } else {
-      console.log(this.carAddForm)
-      this.toastrService.error("Hatalı giriş", "Dikkat")
-    }
-  }
-
   getAllColors() {
     this.colorService.getColors().subscribe(response => {
       this.colors = response.data
@@ -134,10 +111,14 @@ export class CarAddComponent implements OnInit {
       return
     }
 
-    let carModel = Object.assign({modelYear:1990}, this.carAddForm.value)
+    let carModel = Object.assign({}, this.carAddForm.value)
     carModel.brandId = parseInt(this.carAddForm.value.brandId)
     carModel.colorId = parseInt(this.carAddForm.value.colorId)
     
+    carModel = Object.assign({...carModel}, this.carDetailAddForm.value)
+    carModel.modelYear = parseInt(this.carDetailAddForm.value.modelYear)
+
+  
     this.spinnerText = "Araba Genel Bilgileri Giriliyor..."
     this.spinner.show();
 
@@ -145,32 +126,25 @@ export class CarAddComponent implements OnInit {
 
     //TODo: Model Year Çalışmıyor. Backend patlıyor.
     this.carService.add(carModel).subscribe(response => {
-      this.spinnerText = "Araba Teknik Bilgileri Giriliyor.."
-
-      let carDetailModel = Object.assign({carId: response.data.id}, this.carDetailAddForm.value)
-
-      this.carService.AddCarDetail(carDetailModel).subscribe(response => {
-        this.spinnerText = "Araba Fotografları yükleniyor.."
-        setTimeout(() => {
+      this.spinnerText = "Araba bilgileri eklendi. Araba fotoğrafları yükleniyor.."
+      
+      this.carPhotos.forEach(photo => {
+        this.carImageService.uploadCarImage(photo, response.data.id).subscribe(photoResponse => {
+          console.log(photoResponse)
           this.spinner.hide()
-        }, 5000)
+        }, errorResponse => {
+          console.log(errorResponse)
+          this.errorOccurred()
+        })
+      });
 
-      })
     }, errorResponse => {
-      this.spinnerText = "Hata oluştu. Tekrar deneyin.."
-      setTimeout(() => {
-        this.spinner.hide()
-      }, 2000);
-    }, () => {
-      console.log("asd")
+      console.log(errorResponse)
+      this.errorOccurred()
     })
 
     return
-    this.carImageService.uploadCarImage(this.carPhotos[0]).subscribe(response => {
-      console.log(response)
-    }, errorResponse => {
-      console.log(errorResponse)
-    })
+    
   }
 
   removePhoto(index:number) {
@@ -182,4 +156,11 @@ export class CarAddComponent implements OnInit {
     return this.carPhotos.length < this.maxCarImageCount
   }
 
+
+  errorOccurred() {
+    this.spinnerText = "Hata oluştu. Tekrar deneyin.."
+    setTimeout(() => {
+      this.spinner.hide()
+    }, 1000);
+  }
 }
