@@ -58,6 +58,11 @@ export class CarService {
     return this.httpClient.post<ResponseModel>(this.apiUrl + "/update", car)
   }
 
+  delete(carId:number):Observable<ResponseModel> {
+    let carModel = {id: carId}
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "/delete", carModel)
+  }
+
   getCarTotalPrice(carId:number, rentDate:string, returnDate:string) {
     return this.httpClient.get<DataResponseModel<number>>(this.apiUrl + `/getcartotalprice?carId=${carId}&rentDate=${rentDate}&returnDate=${returnDate}`)
   }

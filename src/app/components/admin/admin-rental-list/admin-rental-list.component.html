@@ -19,8 +19,8 @@
                         <th>{{rental.id}}</th>
                         <th>{{rental.carName}}</th>
                         <th>{{rental.customerName}}</th>
-                        <th>{{rental.rentDate}}</th>
-                        <th>{{rental.returnDate}}</th>
+                        <th>{{rental.rentDate | date: 'dd.MM.yyyy'}}</th>
+                        <th>{{rental.returnDate | date: 'dd.MM.yyyy'}}</th>
                     </tr>
                 </tbody>
               </table>

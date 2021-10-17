@@ -1,3 +1,4 @@
+import { AdminCarDetailComponent } from './components/admin/admin-car-detail/admin-car-detail.component';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { AdminRentalListComponent } from './components/admin/admin-rental-list/admin-rental-list.component';
 import { AdminPaymentListComponent } from './components/admin/admin-payment-list/admin-payment-list.component';

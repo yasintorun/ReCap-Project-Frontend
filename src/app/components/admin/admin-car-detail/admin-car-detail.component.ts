@@ -1,32 +1,27 @@
-import Swal from 'sweetalert2';
-import { LocalStorageService, LocalStorageKeys } from './../../services/local-storage.service';
-import { ResponseModel } from './../../models/responseModel';
+import { HostRoot } from './../../../Constants';
+import { CarAllDetail } from './../../../models/carAllDetail';
+import { LocalStorageService, LocalStorageKeys } from './../../../services/local-storage.service';
 import { ToastrService } from 'ngx-toastr';
-import { Rental } from './../../models/Rental';
-import { RentalService } from './../../services/rental.service';
-import { CarService } from './../../services/car.service';
-import { CarAllDetail } from 'src/app/models/carAllDetail';
-import { HostRoot } from './../../Constants';
-import { CarImageService } from './../../services/car-image.service';
-import { CarImage } from './../../models/carImage';
-import { Component, OnInit } from '@angular/core';
+import { RentalService } from './../../../services/rental.service';
+import { CarService } from './../../../services/car.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CarImageService } from './../../../services/car-image.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { CarImage } from 'src/app/models/carImage';
 
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 @Component({
-  selector: 'app-car-detail',
-  templateUrl: './car-detail.component.html',
-  styleUrls: ['./car-detail.component.css']
+  selector: 'app-admin-car-detail',
+  templateUrl: './admin-car-detail.component.html',
+  styleUrls: ['./admin-car-detail.component.css']
 })
-export class CarDetailComponent implements OnInit {
+export class AdminCarDetailComponent implements OnInit {
   carImages: CarImage[] = []
   carDetail: CarAllDetail | null | undefined
 
   todayDate: Date
 
   carRentDatesForm:FormGroup
-
-  userRole:string = "admin"
 
   constructor(
     private formBuilder:FormBuilder,
@@ -99,19 +94,6 @@ export class CarDetailComponent implements OnInit {
     }
   }
 
-  ButtonsByRole() {
-    switch(this.userRole) {
-      case "":
-        return  "Lütfen Giriş Yapın"  
-      case "admin":
-        return `
-          <button class="btn btn-success fw-bolder" style="font-size: 20px;" type="button" data-bs-toggle="modal" data-bs-target="#rentACar">Arabayı Düzenle</button>
-          <button class="btn btn-danger fw-bolder" style="font-size: 20px;" type="button" data-bs-toggle="modal" data-bs-target="#rentACar">Arabayı Sil</button>  
-        `
-    }
-    return ""
-  }
-
 
   rentCar() {
     // let rental:Rental = {
@@ -126,25 +108,5 @@ export class CarDetailComponent implements OnInit {
     //   let error:ResponseModel = errorResponse.error
     //   this.toastrService.error(error.message)
     // })
-  }
-
-
-  deleteCar() {
-    Swal.fire({
-      title: 'Arabayı silmek istediğine emin misin?',
-      showCancelButton: true,
-      showConfirmButton: false,
-      showDenyButton: true,
-      denyButtonText:"Evet, Sil"
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isDenied) {
-        this.carService.delete(this.carDetail.carId).subscribe(response => {
-          Swal.fire('Silindi!', '', 'success')
-        }, errorResponse => {
-          console.log(errorResponse)
-        })
-      }
-    })
   }
 }

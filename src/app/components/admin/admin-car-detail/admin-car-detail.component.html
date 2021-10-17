@@ -1,0 +1,386 @@
+<div class="container">
+    <!--Ana div-->
+  
+    <div>
+      <!--Araba resimlerinin bulunduğu ana yer-->
+      <div id="carouselControls" class="carousel slide test mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- <div class="carousel-item image-cover active">
+            <img src="https://www.volvocars.com/images/v/intl/v/-/media/project/contentplatform/data/media/my22/car-images/xc40-recharge-my22.jpg?h=860&iar=0&w=1147" class="d-block w-100" alt="...">
+          </div> -->
+  
+          <div class="carousel-item image-cover text-center rounded" *ngFor="let carImage of carImages; let first = first;" [class] = "getCarImageActiveClass(first)">
+            <img [src]="getCarImagePath(carImage.imagePath)" class="d-block w-100 rounded" alt="car-image">
+          </div>
+          <!-- <div class="carousel-item image-cover">
+            <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/togg-suv-concept-1577634266.jpg" class="d-block w-100" alt="...">
+          </div> -->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next " type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  
+    <div class="text text-center">
+      <span class="subheading">{{carDetail.brandName}}</span>
+      <h2>{{carDetail.name}}</h2>
+    </div>
+    
+    <div class="row">
+      <div class="col-md d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
+        <div class="media block-6 services">
+          <div class="media-body py-md-4">
+            <div class="d-flex mb-3 align-items-center">
+              <div class="icon d-flex align-items-center justify-content-center">
+                <i class="bi bi-speedometer2"></i>
+              </div>
+              <div class="text">
+                <h3 class="heading mb-0 ps-3">
+                  Mileage
+                  <span>40,000</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>      
+      </div>
+      <div class="col-md d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
+        <div class="media block-6 services">
+          <div class="media-body py-md-4">
+            <div class="d-flex mb-3 align-items-center">
+              <div class="icon d-flex align-items-center justify-content-center">
+                <i class="bi bi-tools"></i>
+              </div>
+              <div class="text">
+                <h3 class="heading mb-0 ps-3">
+                  Transmission
+                  <span>Manual</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>      
+      </div>
+      <div class="col-md d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
+        <div class="media block-6 services">
+          <div class="media-body py-md-4">
+            <div class="d-flex mb-3 align-items-center">
+              <div class="icon d-flex align-items-center justify-content-center">
+                <i class="bi bi-binoculars"></i>
+              </div>
+              <div class="text">
+                <h3 class="heading mb-0 ps-3">
+                  Seats
+                  <span>5 Adults</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>      
+      </div>
+      <div class="col-md d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
+        <div class="media block-6 services">
+          <div class="media-body py-md-4">
+            <div class="d-flex mb-3 align-items-center">
+              <div class="icon d-flex align-items-center justify-content-center">
+                <i class="bi bi-handbag"></i>
+              </div>
+              <div class="text">
+                <h3 class="heading mb-0 ps-3">
+                  Luggage
+                  <span>4 Bags</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>      
+      </div>
+      <div class="col-md d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
+        <div class="media block-6 services">
+          <div class="media-body py-md-4">
+            <div class="d-flex mb-3 align-items-center">
+              <div class="icon d-flex align-items-center justify-content-center">
+                <i class="bi bi-hourglass-bottom"></i>
+              </div>
+              <div class="text">
+                <h3 class="heading mb-0 ps-3">
+                  Fuel
+                  <span>Petrol</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>      
+      </div>
+    </div>
+  
+  
+    <div class="row mb-5">
+      <div class="col-md-12 pills">
+        <div class="bd-example bd-example-tabs">
+          <div class="d-flex justify-content-center pill-headers">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <button class="nav-link active" id="pills-manufacturer-tab" data-bs-toggle="tab" data-bs-target="#pills-manufacturer" type="button" role="tab" aria-controls="pills-manufacturer" aria-selected="true">Description</button>
+                </li>
+              <li class="nav-item">
+                <button class="nav-link" id="pills-review-tab" data-bs-toggle="tab" data-bs-target="#pills-review" type="button" role="tab" aria-controls="pills-review" aria-selected="true">Review</button>
+              </li>
+            </ul>
+          </div>
+  
+          <div class="tab-content" id="pills-tabContent">
+            
+  
+            <div class="tab-pane fade active show" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
+              <p>
+                {{carDetail.description}}
+              </p>
+            </div>
+  
+            <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
+              <div class="row">
+                 <div class="col-md-7">
+                   <h3 class="head ">23 Reviews</h3>
+                   <div class="review d-flex">
+                     <div class="user-img" style="background-image: url(https://technext.github.io/carbook/images/person_1.jpg)"></div>
+                     <div class="desc">
+                       <h4>
+                         <span class="text-left">Jacob Webb</span>
+                         <span class="text-right">14 March 2018</span>
+                       </h4>
+                       <p class="star">
+                         <span>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                         </span>
+                         <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+                       </p>
+                       <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+                     </div>
+                   </div>
+                   <div class="review d-flex">
+                     <div class="user-img" style="background-image: url(https://technext.github.io/carbook/images/person_2.jpg)"></div>
+                     <div class="desc">
+                       <h4>
+                         <span class="text-left">Jacob Webb</span>
+                         <span class="text-right">14 March 2018</span>
+                       </h4>
+                       <p class="star">
+                         <span>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                         </span>
+                         <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+                       </p>
+                       <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+                     </div>
+                   </div>
+                   <div class="review d-flex">
+                     <div class="user-img" style="background-image: url(https://technext.github.io/carbook/images/person_3.jpg)"></div>
+                     <div class="desc">
+                       <h4>
+                         <span class="text-left">Jacob Webb</span>
+                         <span class="text-right">14 March 2018</span>
+                       </h4>
+                       <p class="star">
+                         <span>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star"></i>
+                         </span>
+                         <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+                       </p>
+                       <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-md-5">
+                   <div class="rating-wrap">
+                     <h3 class="head">Give a Review</h3>
+                     <div class="wrap">
+                       <p class="star">
+                         <span>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           (98%)
+                         </span>
+                         <span>20 Reviews</span>
+                       </p>
+                       <p class="star">
+                         <span>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star"></i>
+                           (85%)
+                         </span>
+                         <span>10 Reviews</span>
+                       </p>
+                       <p class="star">
+                         <span>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star"></i>
+                           <i class="bi bi-star"></i>
+                           (70%)
+                         </span>
+                         <span>5 Reviews</span>
+                       </p>
+                       <p class="star">
+                         <span>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star"></i>
+                           <i class="bi bi-star"></i>
+                           <i class="bi bi-star"></i>
+                           (10%)
+                         </span>
+                         <span>0 Reviews</span>
+                       </p>
+                       <p class="star">
+                         <span>
+                           <i class="bi bi-star-fill"></i>
+                           <i class="bi bi-star"></i>
+                           <i class="bi bi-star"></i>
+                           <i class="bi bi-star"></i>
+                           <i class="bi bi-star"></i>
+                           (0%)
+                         </span>
+                         <span>0 Reviews</span>
+                       </p>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div>
+      <div class="text-center">
+        <p class="fw-bold car-detail-price">{{carDetail.dailyPrice}} TL / gün</p>
+        <button class="btn btn-success fw-bolder" style="font-size: 20px;" type="button" data-bs-toggle="modal" data-bs-target="#rentACar">Kirala</button>
+      </div>
+  
+    </div>
+  
+  
+    <div class="modal  fade " id="rentACar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rentACarLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="rentACarLabel">Lütfen kiralanacak tarihleri giriniz.</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="carRentDatesForm">
+              <div class="form-group mb-3">
+                <label for="rentDate">Kiralanacak tarih</label>
+                <input formControlName="rentDate" id="rentDate" class="form-control" type="date" min="{{todayDate | date:'yyyy-MM-dd'}}" max="{{carRentDatesForm.value?.returnDate}}"/>
+              </div>
+              <div class="form-group">
+                <label for="returnDate">Teslim tarihi</label>
+                <input formControlName="returnDate" class="form-control" id="returnDate" type="date" min="{{carRentDatesForm.value?.rentDate}}" />
+              </div>
+  
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeçtim 😕</button>
+            <button type="button" class="btn btn-primary" attr.data-bs-dismiss="{{carRentDatesForm.valid?'modal':''}}" (click) = "checkOut()">Ödeme Yap</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+    <section class="ftco-section ftco-no-pt mt-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 heading-section text-center ftco-animate mb-5 fadeInUp ftco-animated">
+            <span class="subheading">SENİN İÇİN</span>
+            <h2 class="mb-2">Önerilen Arabalar</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="car-wrap rounded ftco-animate fadeInUp ftco-animated">
+              <div class="img rounded d-flex align-items-end" style="background-image: url(https://technext.github.io/carbook/images/car-1.jpg);">
+              </div>
+              <div class="text">
+                <h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
+                <div class="d-flex mb-3">
+                  <span class="cat">Cheverolet</span>
+                  <p class="price ms-auto">$500 <span>/day</span></p>
+                </div>
+                <div class="d-flex mb-0 w-100">
+                  <button class="btn btn-primary w-50 py-2 me-1">Kirala</button>
+                  <button class="btn btn-secondary text-primary-theme w-50 py-2 ms-1">Detay</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="car-wrap rounded ftco-animate fadeInUp ftco-animated">
+              <div class="img rounded d-flex align-items-end" style="background-image: url(https://technext.github.io/carbook/images/car-2.jpg);">
+              </div>
+              <div class="text">
+                <h2 class="mb-0"><a href="car-single.html">Range Rover</a></h2>
+                <div class="d-flex mb-3">
+                  <span class="cat">Subaru</span>
+                  <p class="price ms-auto">$500 <span>/day</span></p>
+                </div>
+                <div class="d-flex mb-0 w-100">
+                  <button class="btn btn-primary w-50 py-2 me-1">Kirala</button>
+                  <button class="btn btn-secondary text-primary-theme w-50 py-2 ms-1">Detay</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="car-wrap rounded ftco-animate fadeInUp ftco-animated">
+              <div class="img rounded d-flex align-items-end" style="background-image: url(https://technext.github.io/carbook/images/car-3.jpg);">
+              </div>
+              <div class="text">
+                <h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
+                <div class="d-flex mb-3">
+                  <span class="cat">Cheverolet</span>
+                  <p class="price ms-auto">$500 <span>/day</span></p>
+                </div>
+                <div class="d-flex mb-0 w-100">
+                  <button class="btn btn-primary w-50 py-2 me-1">Kirala</button>
+                  <button class="btn btn-secondary text-primary-theme  w-50 py-2 ms-1">Detay</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  

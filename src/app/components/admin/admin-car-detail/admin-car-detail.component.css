@@ -1,0 +1,268 @@
+.bordered {
+    border: 1px solid red;
+    margin: auto;
+}
+
+.bg-card-header {
+    background-color: rgb(140 145 175);
+    color: white;
+    text-align: center;
+}
+
+.image-cover { 
+    width: auto;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+.image-cover img {
+    object-position: 50% 50%;
+    image-rendering: crisp-edges;
+}
+
+span.subheading {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: rgba(0, 0, 0, 0.4);
+    display: block;
+}
+
+.media {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+
+.services .media-body .icon i {
+    color: var(--primaryThemeColor);
+    font-size: 42px;
+}
+
+.services .icon {
+    width: 90px !important;
+    height: 90px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.services .media-body .text h3 {
+    font-size: 14px !important;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.services .media-body .text h3 span {
+    display: block;
+    color: #000000;
+}
+
+.flaticon-car-seat:before {
+    content: "\f109";
+}
+
+.pills .features li {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.pills .features li.check i {
+    color: #01d28e;
+}
+
+.pills .features li.remove i {
+    color: red;
+}
+
+.pills .features li i {
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+.pills .features {
+    margin: 0;
+    padding: 0;
+}
+
+
+.nav-item {
+    font-size: large;
+}
+
+.nav-pills li button {
+    margin-right: 2px;
+    color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.nav-pills li button:hover {
+    margin-right: 2px;
+    color: rgba(64, 26, 187, 0.7) !important;
+    background-color: transparent;
+}
+
+.nav-pills li button.active {
+    color: #1089ff !important;
+    background: transparent !important;
+}
+
+.pill-headers {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.226);
+    margin-bottom: 30px;
+}
+
+.pills .head {
+    font-size: 18px;
+    color: rgb(0, 0, 0, 0.8);
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.pills .review {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.pills .review .user-img {
+    width: 80px;
+    height: 80px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+}
+.img, .user-img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.pills .review .desc {
+    width: calc(100% - 100px);
+    margin-left: 30px;
+}
+
+.pills .review .desc h4 {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.pills .review .desc h4 span:first-child {
+    font-size: 16px;
+    color: rgb(0, 0, 0, 0.8);
+}
+.pills .review .desc h4 span {
+    width: 49%;
+    display: inline-block;
+}
+
+.pills .review .desc h4 span:last-child {
+    font-size: 13px;
+    color: #b3b3b3;
+    text-align: right;
+}
+
+.pills .review .desc .star {
+    width: 100%;
+}
+.pills .review .desc .star span {
+    width: 49%;
+    display: inline-block;
+}
+.pills .star i {
+    color: var(--primaryThemeColor);
+    margin-right: 4px;
+}
+
+.pills .rating-wrap .star {
+    display: block;
+    width: 100%;
+}
+
+.pills .rating-wrap .star span:first-child {
+    width: 42%;
+}
+.pills .rating-wrap .star span {
+    display: inline-block;
+    color: #b3b3b3;
+}
+
+.ftco-section {
+    padding: 6em 0;
+    position: relative;
+}
+
+.heading-section .subheading {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primaryThemeColor);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.heading-section h2 {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.car-wrap {
+    margin-bottom: 40px;
+    -webkit-box-shadow: 0px 5px 12px -1px rgb(0 0 0 / 6%);
+    -moz-box-shadow: 0px 5px 12px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0px 5px 12px -1px rgb(0 0 0 / 6%);
+    background: #fff;
+}
+
+
+.car-wrap .img {
+    width: 100%;
+    height: 220px;
+}
+
+.car-wrap .text {
+    border-top: none;
+    padding: 20px 30px 30px;
+}
+
+.car-wrap .text h2 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.car-wrap .text h2 a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.car-wrap .text span.cat {
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.2);
+    display: block;
+    margin-bottom: 0;
+}
+.car-wrap .text .price {
+    color: var(--primaryThemeColor);
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.car-wrap .text .price span {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+
+.car-detail-price {
+    color: #ff901d;
+    font-size: 42px;
+}

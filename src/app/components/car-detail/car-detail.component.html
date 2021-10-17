@@ -1,7 +1,7 @@
 <div class="container">
   <!--Ana div-->
 
-  <div>
+  <div class="mb-3">
     <!--Araba resimlerinin bulunduğu ana yer-->
     <div id="carouselControls" class="carousel slide test mb-4" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -279,10 +279,23 @@
   </div>
 
 
-  <div>
+  <div class="mb-5">
     <div class="text-center">
       <p class="fw-bold car-detail-price">{{carDetail.dailyPrice}} TL / gün</p>
-      <button class="btn btn-success fw-bolder" style="font-size: 20px;" type="button" data-bs-toggle="modal" data-bs-target="#rentACar">Kirala</button>
+      <!-- <div *ngIf="userRole === 'user'">
+      </div> -->
+      <div [ngSwitch] = "userRole">
+        <div *ngSwitchCase="'admin'">
+          <button class="btn btn-success fw-bolder me-1" style="font-size: 20px;" type="button" data-bs-toggle="modal" data-bs-target="#rentACar">Arabayı Düzenle</button>
+          <button class="btn btn-danger fw-bolder ms-1" style="font-size: 20px;" (click)="deleteCar()">Arabayı Sil</button>  
+        </div>
+        <div *ngSwitchCase="'customer'">
+          <button class="btn btn-success fw-bolder" style="font-size: 20px;" type="button" data-bs-toggle="modal" data-bs-target="#rentACar">Kirala</button>
+        </div>
+        <div *ngSwitchDefault>
+          İşlem yapmak için lütfen giriş yapın.
+        </div>
+      </div>
     </div>
 
   </div>
@@ -320,7 +333,7 @@
 
 
 
-  <section class="ftco-section ftco-no-pt mt-5">
+  <section class="ftco-section ftco-no-pt mt-3" *ngIf="userRole === 'customer'">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-12 heading-section text-center ftco-animate mb-5 fadeInUp ftco-animated">

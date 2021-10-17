@@ -43,6 +43,7 @@ import { AdminCarListComponent } from './components/admin/admin-car-list/admin-c
 import { AdminPaymentListComponent } from './components/admin/admin-payment-list/admin-payment-list.component';
 import { AdminRentalListComponent } from './components/admin/admin-rental-list/admin-rental-list.component';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
+import { AdminCarDetailComponent } from './components/admin/admin-car-detail/admin-car-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,8 @@ import { AdminHomeComponent } from './components/admin/admin-home/admin-home.com
     AdminCarListComponent,
     AdminPaymentListComponent,
     AdminRentalListComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    AdminCarDetailComponent
   ],
   imports: [
     BrowserModule,
